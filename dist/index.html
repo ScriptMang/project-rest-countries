@@ -18,12 +18,24 @@
     </div>
 
     <div id="countrySearchContainer">
-        <button id="searchCountryButton">
-            <img src="/search-light-icon.e30b5ccf.svg" alt=" light mode magnifying glass">
-       </button>
-        <input type="text" id="countryInput" placeholder="search for a country...">
+        <div id="searchContainer">
+            <button id="searchCountryButton">
+              <img src="/search-light-icon.e30b5ccf.svg" alt=" light mode magnifying glass">
+            </button>
+            <input type="text" id="countryInput" placeholder="search for a country...">
+        </div>
+
+        <select name="filterCountries" id="filterCountriesSelect">
+              <option value="region">Region</option>
+              <option value="Africa">Africa</option>
+              <option value="America">America</option>
+              <option value="Asia">Asia</option>
+              <option value="Europe">Europe</option>
+              <option value="Oceana">Oceana</option>
+        </select>
     </div>
 
+    
     <!---dynamically generate country-->
     <ul id="countryListContainer"></ul>
 
