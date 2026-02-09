@@ -7,3 +7,10 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+@media screen and (max-width: 375px){
+     div {
+        border: 3px solid red;
+     }
+}
