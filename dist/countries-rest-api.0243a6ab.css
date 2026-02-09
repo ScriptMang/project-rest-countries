@@ -3,6 +3,16 @@
   display: flex;
 }
 
+#searchCountryButton {
+  justify-content: center;
+  gap: 10px;
+  display: flex;
+}
+
+#countryInput {
+  height: 32.86px;
+}
+
 @media screen and (width <= 375px) {
   div {
     border: 3px solid red;
