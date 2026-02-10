@@ -1,4 +1,13 @@
-#title-bar, #countrySearchContainer {
+#title-bar {
+  justify-content: space-between;
+  display: flex;
+}
+
+#web-preference-select {
+  height: 32.86px;
+}
+
+#countrySearchContainer {
   justify-content: space-between;
   display: flex;
 }
