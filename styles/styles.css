@@ -18,6 +18,9 @@
     height: 32.86px;
 }
 
+hr {
+    margin-bottom: 60px;
+}
 @media screen and (max-width: 375px){
      div {
         border: 3px solid red;
