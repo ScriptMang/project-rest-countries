@@ -1,5 +1,5 @@
 import { fetchAllCountries } from './models/Api.js'
-import { Country } from './models/country.js'
+import { Country } from './models/Country.js'
 
 console.log("Script: hello-world");
 

@@ -1,4 +1,4 @@
-import {Country} from './country.js';
+import {Country} from './Country.js';
 
 export async function fetchAllCountries() {
     try {
