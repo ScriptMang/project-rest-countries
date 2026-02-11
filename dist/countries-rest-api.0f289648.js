@@ -716,11 +716,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"gNc1f":[function(require,module,exports,__globalThis) {
 console.log("Script: hello-world");
 // flags,name,population,region, capital
-<<<<<<< HEAD
-fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital').then((resp)=>resp.json()).then((data)=>console.log("Fetched data:", data)).catch((error)=>console.error("Fetch error:", error));
-=======
 fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital').then((resp)=>resp.json()).then((data)=>console.log(data[0].name)).catch((error)=>console.error("Fetch error:", error));
->>>>>>> f3d6e93 (Add flexbox to web-appearance-mode dropdown)
 
 },{}]},["elbaT","gNc1f"], "gNc1f", "parcelRequire8ec7", {})
 
