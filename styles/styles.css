@@ -4,6 +4,10 @@
     justify-content: space-between;
 }
 
+#web-preference {
+    display: flex;
+}
+
 #web-preference-select {
     height: 32.86px;
 }
