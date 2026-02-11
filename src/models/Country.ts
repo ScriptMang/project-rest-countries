@@ -1,4 +1,4 @@
-class Country {
+export class Country {
     flagUrl: string
     commonName: string
     nativeName: string
@@ -28,8 +28,4 @@ class Country {
         this.currencies = currencies;
         this.languages = languages;
     }
-
-
-
-
 }
