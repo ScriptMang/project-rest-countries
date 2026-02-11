@@ -714,10 +714,101 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"gNc1f":[function(require,module,exports,__globalThis) {
+var _apiJs = require("./models/Api.js");
 console.log("Script: hello-world");
-// flags,name,population,region, capital
-fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital').then((resp)=>resp.json()).then((data)=>console.log(data[0].name)).catch((error)=>console.error("Fetch error:", error));
+const printAllCountries = async ()=>{
+    try {
+        const lst = await (0, _apiJs.fetchAllCountries)();
+        const countryLst = lst;
+        if (Array.isArray(countryLst)) countryLst.forEach((elem)=>{
+            console.log(elem['commonName']);
+        });
+    } catch (err) {
+        console.error("Fetch error: ", err);
+    }
+};
+printAllCountries();
 
-},{}]},["elbaT","gNc1f"], "gNc1f", "parcelRequire8ec7", {})
+},{"./models/Api.js":"1geoP"}],"1geoP":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "fetchAllCountries", ()=>fetchAllCountries);
+var _countryJs = require("./country.js");
+async function fetchAllCountries() {
+    try {
+        const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital');
+        if (!resp.ok) throw new Error("response failed");
+        const jsonData = await resp.json();
+        const countryLst = [];
+        jsonData.forEach((elem)=>{
+            const tempCountry = new (0, _countryJs.Country)(elem.flags['svg'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
+            countryLst.push(tempCountry);
+        });
+        return countryLst;
+    } catch (err) {
+        console.error("Fetch error: ", err);
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./country.js":"9u5PB"}],"jnFvT":[function(require,module,exports,__globalThis) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"9u5PB":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Country", ()=>Country);
+class Country {
+    flagUrl;
+    commonName;
+    nativeName;
+    population;
+    region;
+    subRegion;
+    capital;
+    topLevelDomain;
+    currencies;
+    languages;
+    constructor(flagUrl, commonName, nativeName, population, region, subRegion, capital, topLevelDomain, currencies, languages){
+        this.flagUrl = flagUrl;
+        this.commonName = commonName;
+        this.nativeName = nativeName;
+        this.population = population;
+        this.region = region;
+        this.subRegion = subRegion;
+        this.capital = capital;
+        this.topLevelDomain = topLevelDomain;
+        this.currencies = currencies;
+        this.languages = languages;
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["elbaT","gNc1f"], "gNc1f", "parcelRequire8ec7", {})
 
 //# sourceMappingURL=countries-rest-api.0f289648.js.map
