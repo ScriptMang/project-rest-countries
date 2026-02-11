@@ -7,7 +7,6 @@ export async function fetchAllCountries() {
             throw new Error("response failed");
         }
         const jsonData = await resp.json();
-        console.log(jsonData[0].name);
         const countryLst: Country[] = [];
         jsonData.forEach(elem => {
             const tempCountry: Country = new Country(
