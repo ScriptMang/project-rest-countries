@@ -760,7 +760,7 @@ async function fetchAllCountries() {
         const jsonData = await resp.json();
         const countryLst = [];
         jsonData.forEach((elem)=>{
-            const tempCountry = new (0, _countryJs.Country)(elem.flags['svg'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
+            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
             countryLst.push(tempCountry);
         });
         return countryLst;
