@@ -10,7 +10,7 @@ export async function fetchAllCountries() {
         const countryLst: Country[] = [];
         jsonData.forEach(elem => {
             const tempCountry: Country = new Country(
-                elem.flags['svg'],
+                elem.flags['png'],
                 elem.name['common'],
                 elem.name['native'],
                 elem['population'],
