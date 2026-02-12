@@ -2,18 +2,43 @@ import { fetchAllCountries } from './models/Api.js'
 import { Country } from './models/Country.js'
 
 console.log("Script: hello-world");
-
-const printAllCountries = async() => {
+const renderedList =  document.getElementById("countryListContainer") as HTMLElement;
+const displayCountryList = async() => {
     try {
-        const lst = await fetchAllCountries();
-         const countryLst = lst as Country[];
+        const tempLst = await fetchAllCountries();
+         const countryLst = tempLst as Country[];
         if (Array.isArray(countryLst)) {
             countryLst.forEach(elem => {
-                console.log(elem['commonName']);
+                const cardItem = document.createElement('li');
+
+                const flagImg = document.createElement('img');
+                flagImg['src'] = elem["flagUrl"];
+                
+                const countryName = document.createElement('div');
+                countryName.innerText =  elem['commonName'];
+                
+                const population = document.createElement('div');
+                population.innerText =  `${elem['population']}`;
+                
+                const region = document.createElement('div');
+                region.innerText =  elem['region'];
+                
+                const capital = document.createElement('div');
+                capital.innerText =  elem['capital'];
+                
+
+                cardItem.appendChild(flagImg);
+                cardItem.appendChild(countryName);
+                cardItem.appendChild(population);
+                cardItem.appendChild(region);
+                cardItem.appendChild(capital);
+                const realList = renderedList as HTMLElement;
+                realList.appendChild(cardItem);
             });
         } 
     } catch(err) {
         console.error("Fetch error: ", err);
     }
 }
-printAllCountries();
+
+displayCountryList();

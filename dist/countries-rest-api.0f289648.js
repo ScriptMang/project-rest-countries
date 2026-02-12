@@ -716,24 +716,42 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"gNc1f":[function(require,module,exports,__globalThis) {
 var _apiJs = require("./models/Api.js");
 console.log("Script: hello-world");
-const printAllCountries = async ()=>{
+const renderedList = document.getElementById("countryListContainer");
+const displayCountryList = async ()=>{
     try {
-        const lst = await (0, _apiJs.fetchAllCountries)();
-        const countryLst = lst;
+        const tempLst = await (0, _apiJs.fetchAllCountries)();
+        const countryLst = tempLst;
         if (Array.isArray(countryLst)) countryLst.forEach((elem)=>{
-            console.log(elem['commonName']);
+            const cardItem = document.createElement('li');
+            const flagImg = document.createElement('img');
+            flagImg['src'] = elem["flagUrl"];
+            const countryName = document.createElement('div');
+            countryName.innerText = elem['commonName'];
+            const population = document.createElement('div');
+            population.innerText = `${elem['population']}`;
+            const region = document.createElement('div');
+            region.innerText = elem['region'];
+            const capital = document.createElement('div');
+            capital.innerText = elem['capital'];
+            cardItem.appendChild(flagImg);
+            cardItem.appendChild(countryName);
+            cardItem.appendChild(population);
+            cardItem.appendChild(region);
+            cardItem.appendChild(capital);
+            const realList = renderedList;
+            realList.appendChild(cardItem);
         });
     } catch (err) {
         console.error("Fetch error: ", err);
     }
 };
-printAllCountries();
+displayCountryList();
 
 },{"./models/Api.js":"1geoP"}],"1geoP":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllCountries", ()=>fetchAllCountries);
-var _countryJs = require("./country.js");
+var _countryJs = require("./Country.js");
 async function fetchAllCountries() {
     try {
         const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital');
@@ -750,7 +768,36 @@ async function fetchAllCountries() {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./country.js":"9u5PB"}],"jnFvT":[function(require,module,exports,__globalThis) {
+},{"./Country.js":"5zZ6X","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5zZ6X":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Country", ()=>Country);
+class Country {
+    flagUrl;
+    commonName;
+    nativeName;
+    population;
+    region;
+    subRegion;
+    capital;
+    topLevelDomain;
+    currencies;
+    languages;
+    constructor(flagUrl, commonName, nativeName, population, region, subRegion, capital, topLevelDomain, currencies, languages){
+        this.flagUrl = flagUrl;
+        this.commonName = commonName;
+        this.nativeName = nativeName;
+        this.population = population;
+        this.region = region;
+        this.subRegion = subRegion;
+        this.capital = capital;
+        this.topLevelDomain = topLevelDomain;
+        this.currencies = currencies;
+        this.languages = languages;
+    }
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -780,35 +827,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"9u5PB":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Country", ()=>Country);
-class Country {
-    flagUrl;
-    commonName;
-    nativeName;
-    population;
-    region;
-    subRegion;
-    capital;
-    topLevelDomain;
-    currencies;
-    languages;
-    constructor(flagUrl, commonName, nativeName, population, region, subRegion, capital, topLevelDomain, currencies, languages){
-        this.flagUrl = flagUrl;
-        this.commonName = commonName;
-        this.nativeName = nativeName;
-        this.population = population;
-        this.region = region;
-        this.subRegion = subRegion;
-        this.capital = capital;
-        this.topLevelDomain = topLevelDomain;
-        this.currencies = currencies;
-        this.languages = languages;
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["elbaT","gNc1f"], "gNc1f", "parcelRequire8ec7", {})
+},{}]},["elbaT","gNc1f"], "gNc1f", "parcelRequire8ec7", {})
 
 //# sourceMappingURL=countries-rest-api.0f289648.js.map
