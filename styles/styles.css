@@ -31,6 +31,12 @@ hr {
     margin-bottom: 60px;
 }
 
+.countryCard img{
+    height: 300px;
+    width: 375px;
+}
+
+
 @media screen and (max-width: 375px){
      div {
         border: 3px solid red;

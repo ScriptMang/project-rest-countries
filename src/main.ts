@@ -10,9 +10,11 @@ const displayCountryList = async() => {
         if (Array.isArray(countryLst)) {
             countryLst.forEach(elem => {
                 const cardItem = document.createElement('li');
+                cardItem.classList = "countryCard";
 
                 const flagImg = document.createElement('img');
                 flagImg['src'] = elem["flagUrl"];
+               
                 
                 const countryName = document.createElement('div');
                 countryName.innerText =  elem['commonName'];
