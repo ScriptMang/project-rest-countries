@@ -25,11 +25,22 @@ const displayCountryList = async() => {
                 countryInfo.classList = "countryInfo";
 
                 const population = document.createElement('div');
-                population.innerText =  `${elem['population']}`;
+                const popLabel = document.createElement('span');
+                popLabel.innerText = 'Population: ';
+                population.appendChild(popLabel);
+                population.append(`${elem['population']}`);
+
                 const region = document.createElement('div');
-                region.innerText =  elem['region'];
+                const regionLabel = document.createElement('span');
+                regionLabel.innerText = "Region: "; 
+                region.appendChild(regionLabel);
+                region.append(elem['region'])
+
                 const capital = document.createElement('div');
-                capital.innerText =  elem['capital'];
+                const capitalLabel = document.createElement('span');
+                capitalLabel.innerText = "Capital: ";
+                capital.appendChild(capitalLabel);
+                capital.append(elem['capital'])
                 
                 cardItem.appendChild(flagImg);
                 cardItem.appendChild(countryName);
