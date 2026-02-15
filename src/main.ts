@@ -26,18 +26,21 @@ const displayCountryList = async() => {
                 countryInfo.classList = "countryInfo";
 
                 const population = document.createElement('div');
+                population.classList = "countryVal";
                 const popLabel = document.createElement('span');
                 popLabel.innerText = 'Population: ';
                 population.appendChild(popLabel);
                 population.append(`${elem['population']}`);
 
                 const region = document.createElement('div');
+                region.classList = "countryVal";
                 const regionLabel = document.createElement('span');
                 regionLabel.innerText = "Region: "; 
                 region.appendChild(regionLabel);
                 region.append(elem['region'])
 
                 const capital = document.createElement('div');
+                capital.classList = "countryVal";
                 const capitalLabel = document.createElement('span');
                 capitalLabel.innerText = "Capital: ";
                 capital.appendChild(capitalLabel);

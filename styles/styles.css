@@ -63,7 +63,7 @@ ul {
 }
 
 /*styles the countryInfo value; (e.g) region value*/
-.countryCard div > div {
+.countryVal {
     font-family: "Nunito Sans", sans-serif;
     font-weight: 300;
     font-size: 14px;
