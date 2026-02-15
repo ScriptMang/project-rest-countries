@@ -31,6 +31,11 @@ hr {
     margin-bottom: 60px;
 }
 
+.countryCard {
+    border: solid black 2px;
+}
+
+
 .countryCard img{
     height: 300px;
     width: 375px;
