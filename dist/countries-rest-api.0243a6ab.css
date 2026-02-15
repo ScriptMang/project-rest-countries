@@ -43,8 +43,8 @@ ul {
 }
 
 .countryCard img {
-  width: 375px;
-  height: 300px;
+  width: 350px;
+  height: 200px;
 }
 
 @media screen and (width <= 375px) {
