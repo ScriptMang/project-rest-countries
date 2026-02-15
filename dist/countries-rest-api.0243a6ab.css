@@ -40,6 +40,9 @@ ul {
 
 .countryCard {
   border: 2px solid #000;
+  flex-direction: column;
+  gap: 20px;
+  display: flex;
 }
 
 .countryCard img {
