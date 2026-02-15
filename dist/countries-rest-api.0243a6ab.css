@@ -56,6 +56,10 @@ ul {
   font-weight: 800;
 }
 
+.countryInfo {
+  margin-bottom: 40px;
+}
+
 .countryInfo span {
   font-family: Nunito Sans, sans-serif;
   font-size: 14px;

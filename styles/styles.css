@@ -58,6 +58,10 @@ ul {
     font-size: 16px;
 }
 
+.countryInfo {
+    margin-bottom: 40px;
+}
+
 /*styles the countryInfo label; (e.g) region label*/
 .countryInfo span {
     font-family: "Nunito Sans", sans-serif;
