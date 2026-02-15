@@ -51,6 +51,7 @@ ul {
 }
 
 .countryName {
+  margin-left: 20px;
   font-family: Nunito Sans, sans-serif;
   font-size: 16px;
   font-weight: 800;
@@ -58,6 +59,7 @@ ul {
 
 .countryInfo {
   margin-bottom: 40px;
+  margin-left: 20px;
 }
 
 .countryInfo span {
