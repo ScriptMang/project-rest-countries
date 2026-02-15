@@ -728,6 +728,10 @@ const displayCountryList = async ()=>{
             flagImg['src'] = elem["flagUrl"];
             const countryName = document.createElement('div');
             countryName.innerText = elem['commonName'];
+            // creates countryInfo container to hold 
+            // population, region, and capital info 
+            const countryInfo = document.createElement('div');
+            countryInfo.classList = "countryInfo";
             const population = document.createElement('div');
             population.innerText = `${elem['population']}`;
             const region = document.createElement('div');
@@ -736,9 +740,10 @@ const displayCountryList = async ()=>{
             capital.innerText = elem['capital'];
             cardItem.appendChild(flagImg);
             cardItem.appendChild(countryName);
-            cardItem.appendChild(population);
-            cardItem.appendChild(region);
-            cardItem.appendChild(capital);
+            countryInfo.appendChild(population);
+            countryInfo.appendChild(region);
+            countryInfo.appendChild(capital);
+            cardItem.appendChild(countryInfo);
             const realList = renderedList;
             realList.appendChild(cardItem);
         });

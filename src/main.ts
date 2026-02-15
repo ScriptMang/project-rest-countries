@@ -19,21 +19,24 @@ const displayCountryList = async() => {
                 const countryName = document.createElement('div');
                 countryName.innerText =  elem['commonName'];
                 
+                // creates countryInfo container to hold 
+                // population, region, and capital info 
+                const countryInfo = document.createElement('div');
+                countryInfo.classList = "countryInfo";
+
                 const population = document.createElement('div');
                 population.innerText =  `${elem['population']}`;
-                
                 const region = document.createElement('div');
                 region.innerText =  elem['region'];
-                
                 const capital = document.createElement('div');
                 capital.innerText =  elem['capital'];
                 
-
                 cardItem.appendChild(flagImg);
                 cardItem.appendChild(countryName);
-                cardItem.appendChild(population);
-                cardItem.appendChild(region);
-                cardItem.appendChild(capital);
+                countryInfo.appendChild(population);
+                countryInfo.appendChild(region);
+                countryInfo.appendChild(capital);
+                cardItem.appendChild(countryInfo);
                 const realList = renderedList as HTMLElement;
                 realList.appendChild(cardItem);
             });
