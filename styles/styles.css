@@ -27,6 +27,12 @@
     height: 32.86px;
 }
 
+/*styles filter by region select*/
+#filterCountriesSelect {
+    padding: 20px;
+    margin-right: 80px;
+}
+
 hr {
     margin-bottom: 60px;
 }
