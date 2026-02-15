@@ -48,6 +48,26 @@ ul {
     width: 350px;
 }
 
+/*styles the countryName label */
+.countryCard > div {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+/*styles the countryInfo label; (e.g) region label*/
+.countryInfo span {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/*styles the countryInfo value; (e.g) region value*/
+.countryCard div > div {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+}
 
 @media screen and (max-width: 375px){
      div {

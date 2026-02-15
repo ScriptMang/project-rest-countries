@@ -47,6 +47,24 @@ ul {
   height: 200px;
 }
 
+.countryCard > div {
+  font-family: Nunito Sans, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.countryInfo span {
+  font-family: Nunito Sans, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.countryCard div > div {
+  font-family: Nunito Sans, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+
 @media screen and (width <= 375px) {
   div {
     border: 3px solid red;
