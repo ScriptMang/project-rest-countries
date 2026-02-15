@@ -47,7 +47,7 @@ ul {
   height: 200px;
 }
 
-.countryCard > div {
+.countryName {
   font-family: Nunito Sans, sans-serif;
   font-size: 16px;
   font-weight: 800;

@@ -17,6 +17,7 @@ const displayCountryList = async() => {
                
                 
                 const countryName = document.createElement('div');
+                countryName.classList = "countryName";
                 countryName.innerText =  elem['commonName'];
                 
                 // creates countryInfo container to hold 

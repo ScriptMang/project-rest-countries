@@ -727,6 +727,7 @@ const displayCountryList = async ()=>{
             const flagImg = document.createElement('img');
             flagImg['src'] = elem["flagUrl"];
             const countryName = document.createElement('div');
+            countryName.classList = "countryName";
             countryName.innerText = elem['commonName'];
             // creates countryInfo container to hold 
             // population, region, and capital info 

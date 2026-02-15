@@ -49,7 +49,7 @@ ul {
 }
 
 /*styles the countryName label */
-.countryCard > div {
+.countryName {
     font-family: "Nunito Sans", sans-serif;
     font-weight: 800;
     font-size: 16px;
