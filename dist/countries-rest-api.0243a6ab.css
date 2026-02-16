@@ -17,10 +17,17 @@
   display: flex;
 }
 
-#searchCountryButton {
-  justify-content: center;
-  gap: 10px;
+#searchContainer {
+  border: 1px solid #000;
+  place-items: center;
+  column-gap: 20px;
   display: flex;
+}
+
+#searchIcon {
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
 }
 
 #countryInput {
