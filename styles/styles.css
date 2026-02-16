@@ -56,8 +56,8 @@ ul {
 
 
 .countryCard img{
-    height: 180px;
-    width: 315px;  
+    height: 250px;
+    width: 435px;  
 }
 
 .countryDetails {
@@ -65,7 +65,7 @@ ul {
     flex-direction: column;
     row-gap: 20px;
     margin-top: 10px;
-    height: 170px;
+    height: 190px;
 }
 
 

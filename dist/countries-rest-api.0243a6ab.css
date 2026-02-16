@@ -54,14 +54,14 @@ ul {
 }
 
 .countryCard img {
-  width: 315px;
-  height: 180px;
+  width: 435px;
+  height: 250px;
 }
 
 .countryDetails {
   flex-direction: column;
   row-gap: 20px;
-  height: 170px;
+  height: 190px;
   margin-top: 10px;
   display: flex;
 }
