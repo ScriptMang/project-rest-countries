@@ -48,6 +48,7 @@ ul {
     display: flex;
     flex-direction: column;
     border: solid black 2px;
+    border-radius: 6px;
     gap: 20px;
 }
 

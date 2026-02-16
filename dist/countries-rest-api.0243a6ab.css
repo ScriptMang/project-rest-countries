@@ -45,6 +45,7 @@ ul {
 
 .countryCard {
   border: 2px solid #000;
+  border-radius: 6px;
   flex-direction: column;
   gap: 20px;
   display: flex;
