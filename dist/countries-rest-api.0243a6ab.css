@@ -57,7 +57,10 @@ ul {
 }
 
 .countryDetails {
+  flex-direction: column;
+  row-gap: 20px;
   height: 180px;
+  display: flex;
 }
 
 .countryName {
