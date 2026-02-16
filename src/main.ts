@@ -15,7 +15,11 @@ const displayCountryList = async() => {
                 const flagImg = document.createElement('img');
                 flagImg['src'] = elem["flagUrl"];
                
-                
+                 // create contryDetails container that holds
+                //  countryName and countryInfo container
+                const countryDetails = document.createElement('div');
+                countryDetails.classList = "countryDetails";
+
                 const countryName = document.createElement('div');
                 countryName.classList = "countryName";
                 countryName.innerText =  elem['commonName'];
@@ -47,11 +51,12 @@ const displayCountryList = async() => {
                 capital.append(elem['capital'])
                 
                 cardItem.appendChild(flagImg);
-                cardItem.appendChild(countryName);
+                countryDetails.appendChild(countryName)
                 countryInfo.appendChild(population);
                 countryInfo.appendChild(region);
                 countryInfo.appendChild(capital);
-                cardItem.appendChild(countryInfo);
+                countryDetails.appendChild(countryInfo)
+                cardItem.appendChild(countryDetails);
                 const realList = renderedList as HTMLElement;
                 realList.appendChild(cardItem);
             });
