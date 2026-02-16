@@ -51,8 +51,12 @@ ul {
 }
 
 .countryCard img {
-  width: 430px;
-  height: 330px;
+  width: 315px;
+  height: 180px;
+}
+
+.countryDetails {
+  height: 180px;
 }
 
 .countryName {
