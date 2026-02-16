@@ -39,6 +39,8 @@ hr {
 ul {
   flex-wrap: wrap;
   gap: 80px;
+  margin-top: 40px;
+  margin-left: 40px;
   list-style: none;
   display: flex;
 }
