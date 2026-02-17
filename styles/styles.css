@@ -67,6 +67,7 @@
 /*styles filter by region select*/
 #filterCountriesSelect {
     padding: 20px;
+    width: 12vw;
     margin-right: 15px;
 }
 

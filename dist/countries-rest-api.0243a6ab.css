@@ -59,6 +59,7 @@
 }
 
 #filterCountriesSelect {
+  width: 12vw;
   margin-right: 15px;
   padding: 20px;
 }
