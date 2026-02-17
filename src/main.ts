@@ -1,8 +1,46 @@
-import { fetchAllCountries } from './models/Api.js'
+import { fetchAllCountries, fetchCountry } from './models/Api.js'
 import { Country } from './models/Country.js'
 
 console.log("Script: hello-world");
 const renderedList =  document.getElementById("countryListContainer") as HTMLElement;
+const searchInput = document.getElementById("countryInput") as HTMLInputElement;
+
+const tempLst = [];
+searchInput.addEventListener('change', async() => {
+    try {
+        const searchVal = searchInput.value;
+        const countryLst  = await fetchCountry(searchVal) as Country[];
+        
+        // test the api is returning a result
+        countryLst.forEach(elem => {
+
+            /*   flagUrl: string
+                commonName: string
+                nativeName: string
+                population: number
+                region: string
+                subRegion: string
+                capital: string
+                topLevelDomain: string
+                currencies: string[]
+                languages: string[]
+
+                flags,name,population,region,capital
+            */
+
+            console.log(`${searchVal}`);
+            console.log(`name: `+ elem['commonName']);
+            console.log(`flagURL: `+ elem['flagUrl']);
+            console.log(`population: `+ elem['population']);
+            console.log(`region: `+ elem['region']);
+            console.log(`capital: `+ elem['capital']);
+        })
+    } catch(err) {
+        console.error("Fetch error: ", err);
+    }
+})
+
+
 const displayCountryList = async() => {
     try {
         const tempLst = await fetchAllCountries();

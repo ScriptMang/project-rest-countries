@@ -717,6 +717,37 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var _apiJs = require("./models/Api.js");
 console.log("Script: hello-world");
 const renderedList = document.getElementById("countryListContainer");
+const searchInput = document.getElementById("countryInput");
+const tempLst = [];
+searchInput.addEventListener('change', async ()=>{
+    try {
+        const searchVal = searchInput.value;
+        const countryLst = await (0, _apiJs.fetchCountry)(searchVal);
+        // test the api is returning a result
+        countryLst.forEach((elem)=>{
+            /*   flagUrl: string
+                commonName: string
+                nativeName: string
+                population: number
+                region: string
+                subRegion: string
+                capital: string
+                topLevelDomain: string
+                currencies: string[]
+                languages: string[]
+
+                flags,name,population,region,capital
+            */ console.log(`${searchVal}`);
+            console.log(`name: ` + elem['commonName']);
+            console.log(`flagURL: ` + elem['flagUrl']);
+            console.log(`population: ` + elem['population']);
+            console.log(`region: ` + elem['region']);
+            console.log(`capital: ` + elem['capital']);
+        });
+    } catch (err) {
+        console.error("Fetch error: ", err);
+    }
+});
 const displayCountryList = async ()=>{
     try {
         const tempLst = await (0, _apiJs.fetchAllCountries)();
@@ -775,10 +806,26 @@ displayCountryList();
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllCountries", ()=>fetchAllCountries);
+parcelHelpers.export(exports, "fetchCountry", ()=>fetchCountry);
 var _countryJs = require("./Country.js");
 async function fetchAllCountries() {
     try {
         const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital');
+        if (!resp.ok) throw new Error("response failed");
+        const jsonData = await resp.json();
+        const countryLst = [];
+        jsonData.forEach((elem)=>{
+            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
+            countryLst.push(tempCountry);
+        });
+        return countryLst;
+    } catch (err) {
+        console.error("Fetch error: ", err);
+    }
+}
+async function fetchCountry(tgtCountry) {
+    try {
+        const resp = await fetch(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital`);
         if (!resp.ok) throw new Error("response failed");
         const jsonData = await resp.json();
         const countryLst = [];
