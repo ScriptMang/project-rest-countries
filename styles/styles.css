@@ -8,8 +8,13 @@
     display: flex;
 }
 
+#web-title {
+    margin-left: 80px;
+}
+
 #web-preference-select {
     height: 32.86px;
+    margin-right: 80px;
 }
 
 #countrySearchContainer {
