@@ -718,6 +718,7 @@ var _apiJs = require("./models/Api.js");
 console.log("Script: hello-world");
 const renderedList = document.getElementById("countryListContainer");
 const searchInput = document.getElementById("countryInput");
+const filterCountriesByRegionSelect = document.getElementById("filterByRegionSelect");
 searchInput.addEventListener('change', async ()=>{
     try {
         const searchVal = searchInput.value;
@@ -725,27 +726,16 @@ searchInput.addEventListener('change', async ()=>{
         if (searchVal === "") tempCountryLst = await (0, _apiJs.fetchAllCountries)();
         else tempCountryLst = await (0, _apiJs.fetchCountry)(searchVal);
         displayCountryList(tempCountryLst);
-    // test the api is returning a result
-    // countryLst.forEach(elem => {
-    //     /*   flagUrl: string
-    //         commonName: string
-    //         nativeName: string
-    //         population: number
-    //         region: string
-    //         subRegion: string
-    //         capital: string
-    //         topLevelDomain: string
-    //         currencies: string[]
-    //         languages: string[]
-    //         flags,name,population,region,capital
-    //     */
-    //     console.log(`${searchVal}`);
-    //     console.log(`name: `+ elem['commonName']);
-    //     console.log(`flagURL: `+ elem['flagUrl']);
-    //     console.log(`population: `+ elem['population']);
-    //     console.log(`region: `+ elem['region']);
-    //     console.log(`capital: `+ elem['capital']);
-    // })
+        filterCountriesByRegionSelect.addEventListener("change", ()=>{
+            const regionVal = filterCountriesByRegionSelect.value;
+            if (regionVal === "Label") {
+                displayCountryList(tempCountryLst);
+                return;
+            }
+            const filteredLst = tempCountryLst.filter((elem)=>elem['region'] === regionVal);
+            console.log(regionVal);
+            displayCountryList(filteredLst);
+        });
     } catch (err) {
         console.error("Fetch error: ", err);
     }
@@ -806,6 +796,16 @@ const displayDefaultCountryLst = async ()=>{
     try {
         const countryList = await (0, _apiJs.fetchAllCountries)();
         displayCountryList(countryList);
+        filterCountriesByRegionSelect.addEventListener("change", ()=>{
+            const regionVal = filterCountriesByRegionSelect.value;
+            if (regionVal === "Label") {
+                displayCountryList(countryList);
+                return;
+            }
+            const filteredLst = countryList.filter((elem)=>elem['region'] === regionVal);
+            console.log(regionVal);
+            displayCountryList(filteredLst);
+        });
     } catch (err) {
         console.error("Fetch error: ", err);
     }

@@ -4,6 +4,7 @@ import { Country } from './models/Country.js'
 console.log("Script: hello-world");
 const renderedList =  document.getElementById("countryListContainer") as HTMLElement;
 const searchInput = document.getElementById("countryInput") as HTMLInputElement;
+const filterCountriesByRegionSelect = document.getElementById("filterByRegionSelect") as HTMLSelectElement;
 
 searchInput.addEventListener('change', async() => {
     try {
@@ -17,35 +18,20 @@ searchInput.addEventListener('change', async() => {
         
         displayCountryList(tempCountryLst);
         
-        // test the api is returning a result
-        // countryLst.forEach(elem => {
-
-        //     /*   flagUrl: string
-        //         commonName: string
-        //         nativeName: string
-        //         population: number
-        //         region: string
-        //         subRegion: string
-        //         capital: string
-        //         topLevelDomain: string
-        //         currencies: string[]
-        //         languages: string[]
-
-        //         flags,name,population,region,capital
-        //     */
-
-        //     console.log(`${searchVal}`);
-        //     console.log(`name: `+ elem['commonName']);
-        //     console.log(`flagURL: `+ elem['flagUrl']);
-        //     console.log(`population: `+ elem['population']);
-        //     console.log(`region: `+ elem['region']);
-        //     console.log(`capital: `+ elem['capital']);
-        // })
+        filterCountriesByRegionSelect.addEventListener( "change", () => {
+            const regionVal = filterCountriesByRegionSelect.value;
+            if (regionVal === "Label") {
+                displayCountryList(tempCountryLst);
+                return;
+            }
+            const filteredLst = tempCountryLst.filter((elem) => elem['region'] === regionVal)
+            console.log(regionVal); 
+            displayCountryList(filteredLst);
+        });
     } catch(err) {
         console.error("Fetch error: ", err);
     }
 })
-
 
 const displayCountryList = async(countryLst: Country[]) => {
     try {
@@ -114,6 +100,17 @@ const displayDefaultCountryLst = async() => {
     try {
         const countryList = await fetchAllCountries() as Country[];
         displayCountryList(countryList);
+
+        filterCountriesByRegionSelect.addEventListener( "change", () => {
+            const regionVal = filterCountriesByRegionSelect.value;
+            if (regionVal === "Label") {
+                displayCountryList(countryList);
+                return;
+            }
+            const filteredLst = countryList.filter((elem) => elem['region'] === regionVal)
+            console.log(regionVal); 
+            displayCountryList(filteredLst);
+        });
     } catch(err) {
         console.error("Fetch error: ", err);
     }
