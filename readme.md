@@ -1,0 +1,6 @@
+# Reflections
+
+
+## My Experience
+
+This project required me to build a homepage, and a details page for each country I fetched via REST apis. Using the fetch function returned a promise when unwrapped gave the country info using async await. Implementing the api wasn't the hardest part, styling the homepage was hard. The spacing of the elements and the need to put them in flexboxes took times to get right. Another issue I ran into on the homepage was styling the input field along the search icon. It took me awhile to figure how to style them as though their one item. All I had to do was set the border for the input field to none. Overall I wanted the homepage I was working on to match the desktop preview image as much as possible. I got stuck though at another point when I couldn't figure out the size of the country cards on the homepage. Eventually, I realized the best I can do is increase the size of the cards until 4 are on screen. Another thing I had to do is eye the left and right margins  of  first and last  country card of the 1st row.  If I had more time I'd probably finish the detail page, but I'm happy I finished the basic search for countries and filter countries by region features.
