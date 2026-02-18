@@ -57,33 +57,3 @@ export async function fetchCountry(tgtCountry: string) {
         console.error("Fetch error: ", err);
     }
 }
-
-// Fetches all the countries that match the target region from an existing search
-export async function filterCountriesByRegion(tgtRegion: string) {
-    try {
-        const resp = await fetch(`https://restcountries.com/v3.1/region/${tgtRegion}?fields=flags,name,population,region,capital`);
-        if (!resp.ok) {
-            throw new Error("response failed");
-        }
-        const jsonData = await resp.json();
-        const countryLst: Country[] = [];
-        jsonData.forEach((elem: any) => {
-            const tempCountry: Country = new Country(
-                elem.flags['png'],
-                elem.name['common'],
-                elem.name['native'],
-                elem['population'],
-                elem['region'],
-                elem['subRegion'],
-                elem['capital'],
-                elem['topLevelDomain'],
-                elem['currencies'],
-                elem['languages']
-            );
-            countryLst.push(tempCountry);
-        });
-        return countryLst;
-    } catch(err){
-        console.error("Fetch error: ", err);
-    }
-}

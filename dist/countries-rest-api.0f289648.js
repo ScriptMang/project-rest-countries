@@ -817,8 +817,6 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllCountries", ()=>fetchAllCountries);
 parcelHelpers.export(exports, "fetchCountry", ()=>fetchCountry);
-// Fetches all the countries that match the target region from an existing search
-parcelHelpers.export(exports, "filterCountriesByRegion", ()=>filterCountriesByRegion);
 var _countryJs = require("./Country.js");
 async function fetchAllCountries() {
     try {
@@ -838,21 +836,6 @@ async function fetchAllCountries() {
 async function fetchCountry(tgtCountry) {
     try {
         const resp = await fetch(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital`);
-        if (!resp.ok) throw new Error("response failed");
-        const jsonData = await resp.json();
-        const countryLst = [];
-        jsonData.forEach((elem)=>{
-            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
-            countryLst.push(tempCountry);
-        });
-        return countryLst;
-    } catch (err) {
-        console.error("Fetch error: ", err);
-    }
-}
-async function filterCountriesByRegion(tgtRegion) {
-    try {
-        const resp = await fetch(`https://restcountries.com/v3.1/region/${tgtRegion}?fields=flags,name,population,region,capital`);
         if (!resp.ok) throw new Error("response failed");
         const jsonData = await resp.json();
         const countryLst = [];
