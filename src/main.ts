@@ -5,46 +5,52 @@ console.log("Script: hello-world");
 const renderedList =  document.getElementById("countryListContainer") as HTMLElement;
 const searchInput = document.getElementById("countryInput") as HTMLInputElement;
 
-const tempLst = [];
 searchInput.addEventListener('change', async() => {
     try {
         const searchVal = searchInput.value;
-        const countryLst  = await fetchCountry(searchVal) as Country[];
+        let tempCountryLst : Country[];
+        if (searchVal === "") {
+             tempCountryLst = await fetchAllCountries() as Country[];
+        } else {
+            tempCountryLst  = await fetchCountry(searchVal) as Country[];
+        }
+        
+        displayCountryList(tempCountryLst);
         
         // test the api is returning a result
-        countryLst.forEach(elem => {
+        // countryLst.forEach(elem => {
 
-            /*   flagUrl: string
-                commonName: string
-                nativeName: string
-                population: number
-                region: string
-                subRegion: string
-                capital: string
-                topLevelDomain: string
-                currencies: string[]
-                languages: string[]
+        //     /*   flagUrl: string
+        //         commonName: string
+        //         nativeName: string
+        //         population: number
+        //         region: string
+        //         subRegion: string
+        //         capital: string
+        //         topLevelDomain: string
+        //         currencies: string[]
+        //         languages: string[]
 
-                flags,name,population,region,capital
-            */
+        //         flags,name,population,region,capital
+        //     */
 
-            console.log(`${searchVal}`);
-            console.log(`name: `+ elem['commonName']);
-            console.log(`flagURL: `+ elem['flagUrl']);
-            console.log(`population: `+ elem['population']);
-            console.log(`region: `+ elem['region']);
-            console.log(`capital: `+ elem['capital']);
-        })
+        //     console.log(`${searchVal}`);
+        //     console.log(`name: `+ elem['commonName']);
+        //     console.log(`flagURL: `+ elem['flagUrl']);
+        //     console.log(`population: `+ elem['population']);
+        //     console.log(`region: `+ elem['region']);
+        //     console.log(`capital: `+ elem['capital']);
+        // })
     } catch(err) {
         console.error("Fetch error: ", err);
     }
 })
 
 
-const displayCountryList = async() => {
+const displayCountryList = async(countryLst: Country[]) => {
     try {
-        const tempLst = await fetchAllCountries();
-         const countryLst = tempLst as Country[];
+        const realList = renderedList as HTMLElement;
+        realList.innerHTML = "";
         if (Array.isArray(countryLst)) {
             countryLst.forEach(elem => {
                 const cardItem = document.createElement('li');
@@ -95,7 +101,6 @@ const displayCountryList = async() => {
                 countryInfo.appendChild(capital);
                 countryDetails.appendChild(countryInfo)
                 cardItem.appendChild(countryDetails);
-                const realList = renderedList as HTMLElement;
                 realList.appendChild(cardItem);
             });
         } 
@@ -104,4 +109,13 @@ const displayCountryList = async() => {
     }
 }
 
-displayCountryList();
+// displays all the countries as cards in the list
+const displayDefaultCountryLst = async() => {
+    try {
+        const countryList = await fetchAllCountries() as Country[];
+        displayCountryList(countryList);
+    } catch(err) {
+        console.error("Fetch error: ", err);
+    }
+} 
+displayDefaultCountryLst();
