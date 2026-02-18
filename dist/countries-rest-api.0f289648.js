@@ -718,40 +718,42 @@ var _apiJs = require("./models/Api.js");
 console.log("Script: hello-world");
 const renderedList = document.getElementById("countryListContainer");
 const searchInput = document.getElementById("countryInput");
-const tempLst = [];
 searchInput.addEventListener('change', async ()=>{
     try {
         const searchVal = searchInput.value;
-        const countryLst = await (0, _apiJs.fetchCountry)(searchVal);
-        // test the api is returning a result
-        countryLst.forEach((elem)=>{
-            /*   flagUrl: string
-                commonName: string
-                nativeName: string
-                population: number
-                region: string
-                subRegion: string
-                capital: string
-                topLevelDomain: string
-                currencies: string[]
-                languages: string[]
-
-                flags,name,population,region,capital
-            */ console.log(`${searchVal}`);
-            console.log(`name: ` + elem['commonName']);
-            console.log(`flagURL: ` + elem['flagUrl']);
-            console.log(`population: ` + elem['population']);
-            console.log(`region: ` + elem['region']);
-            console.log(`capital: ` + elem['capital']);
-        });
+        let tempCountryLst;
+        if (searchVal === "") tempCountryLst = await (0, _apiJs.fetchAllCountries)();
+        else tempCountryLst = await (0, _apiJs.fetchCountry)(searchVal);
+        displayCountryList(tempCountryLst);
+    // test the api is returning a result
+    // countryLst.forEach(elem => {
+    //     /*   flagUrl: string
+    //         commonName: string
+    //         nativeName: string
+    //         population: number
+    //         region: string
+    //         subRegion: string
+    //         capital: string
+    //         topLevelDomain: string
+    //         currencies: string[]
+    //         languages: string[]
+    //         flags,name,population,region,capital
+    //     */
+    //     console.log(`${searchVal}`);
+    //     console.log(`name: `+ elem['commonName']);
+    //     console.log(`flagURL: `+ elem['flagUrl']);
+    //     console.log(`population: `+ elem['population']);
+    //     console.log(`region: `+ elem['region']);
+    //     console.log(`capital: `+ elem['capital']);
+    // })
     } catch (err) {
         console.error("Fetch error: ", err);
     }
 });
-const displayCountryList = async ()=>{
+const displayCountryList = async (countryLst)=>{
     try {
-        const tempLst = await (0, _apiJs.fetchAllCountries)();
-        const countryLst = tempLst;
+        const realList = renderedList;
+        realList.innerHTML = "";
         if (Array.isArray(countryLst)) countryLst.forEach((elem)=>{
             const cardItem = document.createElement('li');
             cardItem.classList = "countryCard";
@@ -793,20 +795,30 @@ const displayCountryList = async ()=>{
             countryInfo.appendChild(capital);
             countryDetails.appendChild(countryInfo);
             cardItem.appendChild(countryDetails);
-            const realList = renderedList;
             realList.appendChild(cardItem);
         });
     } catch (err) {
         console.error("Fetch error: ", err);
     }
 };
-displayCountryList();
+// displays all the countries as cards in the list
+const displayDefaultCountryLst = async ()=>{
+    try {
+        const countryList = await (0, _apiJs.fetchAllCountries)();
+        displayCountryList(countryList);
+    } catch (err) {
+        console.error("Fetch error: ", err);
+    }
+};
+displayDefaultCountryLst();
 
 },{"./models/Api.js":"1geoP"}],"1geoP":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllCountries", ()=>fetchAllCountries);
 parcelHelpers.export(exports, "fetchCountry", ()=>fetchCountry);
+// fetches all the countries in the existing search
+parcelHelpers.export(exports, "filterCountriesByRegion", ()=>filterCountriesByRegion);
 var _countryJs = require("./Country.js");
 async function fetchAllCountries() {
     try {
@@ -826,6 +838,21 @@ async function fetchAllCountries() {
 async function fetchCountry(tgtCountry) {
     try {
         const resp = await fetch(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital`);
+        if (!resp.ok) throw new Error("response failed");
+        const jsonData = await resp.json();
+        const countryLst = [];
+        jsonData.forEach((elem)=>{
+            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
+            countryLst.push(tempCountry);
+        });
+        return countryLst;
+    } catch (err) {
+        console.error("Fetch error: ", err);
+    }
+}
+async function filterCountriesByRegion(tgtRegion) {
+    try {
+        const resp = await fetch(`https://restcountries.com/v3.1/region/${tgtRegion}?fields=flags,name,population,region,capital`);
         if (!resp.ok) throw new Error("response failed");
         const jsonData = await resp.json();
         const countryLst = [];
