@@ -817,7 +817,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllCountries", ()=>fetchAllCountries);
 parcelHelpers.export(exports, "fetchCountry", ()=>fetchCountry);
-// fetches all the countries in the existing search
+// Fetches all the countries that match the target region from an existing search
 parcelHelpers.export(exports, "filterCountriesByRegion", ()=>filterCountriesByRegion);
 var _countryJs = require("./Country.js");
 async function fetchAllCountries() {

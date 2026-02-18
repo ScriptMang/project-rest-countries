@@ -58,7 +58,7 @@ export async function fetchCountry(tgtCountry: string) {
     }
 }
 
-// fetches all the countries in the existing search
+// Fetches all the countries that match the target region from an existing search
 export async function filterCountriesByRegion(tgtRegion: string) {
     try {
         const resp = await fetch(`https://restcountries.com/v3.1/region/${tgtRegion}?fields=flags,name,population,region,capital`);
