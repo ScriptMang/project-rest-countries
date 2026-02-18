@@ -8,7 +8,7 @@ export async function fetchAllCountries() {
         }
         const jsonData = await resp.json();
         const countryLst: Country[] = [];
-        jsonData.forEach(elem => {
+        jsonData.forEach((elem: any) => {
             const tempCountry: Country = new Country(
                 elem.flags['png'],
                 elem.name['common'],
@@ -37,7 +37,7 @@ export async function fetchCountry(tgtCountry: string) {
         }
         const jsonData = await resp.json();
         const countryLst: Country[] = [];
-        jsonData.forEach(elem => {
+        jsonData.forEach((elem: any) => {
             const tempCountry: Country = new Country(
                 elem.flags['png'],
                 elem.name['common'],
@@ -67,7 +67,7 @@ export async function filterCountriesByRegion(tgtRegion: string) {
         }
         const jsonData = await resp.json();
         const countryLst: Country[] = [];
-        jsonData.forEach(elem => {
+        jsonData.forEach((elem: any) => {
             const tempCountry: Country = new Country(
                 elem.flags['png'],
                 elem.name['common'],
