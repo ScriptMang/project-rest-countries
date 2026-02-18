@@ -132,8 +132,74 @@ ul {
     font-size: 14px;
 }
 
-@media screen and (max-width: 375px){
-     div {
+@media screen and (max-width: 376px){
+    body {
+        margin: 0px;
+    }
+    
+    #title-bar {
+        padding: 10px;
+    }
+
+    #web-title {
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 14px;
+        font-weight: 800;
+        margin-left: 20px;
+    }
+
+    #web-preference {
+        margin-right: 20px;
+    }
+
+    #webPreferenceButtonToggle {
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 14px;
+    }
+    
+    hr {
+        margin-bottom: 25px;
+    }
+    
+    #countrySearchContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 40px;
+        width: 335px;
+        margin: 10px
+    }
+    
+    #searchContainer {
+        height: 50px;
+        width: 335px;
+    }
+
+    #filterByRegionSelect {
+        margin-right: 0px;
+        width: 250px;
+        padding: 10px;
+    }
+    #countryListContainer {
+        margin-left: 5px;
+    }
+
+
+.countryCard img{
+    height: 150px;
+    width: 275px;  
+}
+
+.countryDetails {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    margin-top: 10px;
+    height: 150px;
+}
+
+/*     
+    div {
         border: 3px solid red;
-     }
+     } */
 }

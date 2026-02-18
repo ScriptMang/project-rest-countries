@@ -125,9 +125,70 @@ ul {
   font-weight: 300;
 }
 
-@media screen and (width <= 375px) {
-  div {
-    border: 3px solid red;
+@media screen and (width <= 376px) {
+  body {
+    margin: 0;
+  }
+
+  #title-bar {
+    padding: 10px;
+  }
+
+  #web-title {
+    margin-left: 20px;
+    font-family: Nunito Sans, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  #web-preference {
+    margin-right: 20px;
+  }
+
+  #webPreferenceButtonToggle {
+    font-family: Nunito Sans, sans-serif;
+    font-size: 14px;
+  }
+
+  hr {
+    margin-bottom: 25px;
+  }
+
+  #countrySearchContainer {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    width: 335px;
+    margin: 10px;
+    display: flex;
+  }
+
+  #searchContainer {
+    width: 335px;
+    height: 50px;
+  }
+
+  #filterByRegionSelect {
+    width: 250px;
+    margin-right: 0;
+    padding: 10px;
+  }
+
+  #countryListContainer {
+    margin-left: 5px;
+  }
+
+  .countryCard img {
+    width: 275px;
+    height: 150px;
+  }
+
+  .countryDetails {
+    flex-direction: column;
+    row-gap: 20px;
+    height: 150px;
+    margin-top: 10px;
+    display: flex;
   }
 }
 /*# sourceMappingURL=countries-rest-api.0243a6ab.css.map */
