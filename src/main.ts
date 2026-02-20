@@ -89,7 +89,7 @@ const displayCountryList = async(countryLst: Country[]) => {
                 cardItem.appendChild(countryDetails);
                 realList.appendChild(cardItem);
             });
-        } 
+         }
     } catch(err) {
         console.error("Fetch error: ", err);
     }
