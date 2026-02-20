@@ -1,3 +1,7 @@
+#detailPageLink {
+    margin-left: 80px;
+}
+
 #title-bar {
     display: flex;
     align-items: center;
@@ -89,7 +93,6 @@ ul {
     border-radius: 6px;
     box-shadow: 2px 5px 12px 5px whitesmoke;
 }
-
 
 .countryCard img{
     height: 250px;
