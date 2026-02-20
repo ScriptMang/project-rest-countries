@@ -206,3 +206,23 @@ ul {
         border: 3px solid red;
      } */
 }
+
+/* styling for details page */
+#backButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6vw;
+    margin-left: 80px;
+    border: 1px solid black;
+    border-radius: 3px;
+    box-shadow: 2px 3px 3px 2px whitesmoke;
+}
+
+#backButton {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    background-color: white;
+}
