@@ -212,11 +212,12 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 6vw;
+    width: 130px;
     margin-left: 80px;
     border: 1px solid black;
     border-radius: 3px;
     box-shadow: 2px 3px 3px 2px whitesmoke;
+    margin-bottom: 60px;
 }
 
 #backButton {
@@ -225,4 +226,14 @@ ul {
     padding: 8px;
     border: none;
     background-color: white;
+}
+
+#detailsCountryImgContainer {
+    margin-left: 80px;
+}
+
+#countryFlag {
+   height: 500px;
+   width: 650px;
+   box-shadow: 2px 6px 20px 23px whitesmoke;
 }
