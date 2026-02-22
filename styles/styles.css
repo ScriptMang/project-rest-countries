@@ -2,25 +2,25 @@
     margin-left: 80px;
 }
 
-#title-bar {
+.titleBar {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-#web-preference {
+.webPreference {
     display: flex;
     align-items: center;
     gap: 5px;
     margin-right: 95px;
 }
 
-#web-preference img{
+.webPreference img{
     height: 24px;
     width: 24px;
 }
 
-#webPreferenceButtonToggle {
+.webPreferenceButtonToggle {
     font-family: "Nunito Sans", sans-serif;
     font-size: 20px;
     font-weight: 600;
@@ -28,11 +28,11 @@
     border: none;
 }
 
-#webPreferenceButtonToggle:hover {
+.webPreferenceButtonToggle:hover {
     cursor: pointer;
 }
 
-#web-title {
+.webTitle {
     margin-left: 80px;
 }
 
@@ -140,22 +140,22 @@ ul {
         margin: 0px;
     }
     
-    #title-bar {
+    .titleBar {
         padding: 10px;
     }
 
-    #web-title {
+    .webTitle {
         font-family: "Nunito Sans", sans-serif;
         font-size: 14px;
         font-weight: 800;
         margin-left: 20px;
     }
 
-    #web-preference {
+    .webPreference {
         margin-right: 20px;
     }
 
-    #webPreferenceButtonToggle {
+    .webPreferenceButtonToggle {
         font-family: "Nunito Sans", sans-serif;
         font-size: 14px;
     }
