@@ -33,6 +33,14 @@ searchInput.addEventListener('change', async() => {
     }
 })
 
+// renders the detail-page dynamically for the selected country
+function displayDetailsPage(cardItem: Country) {
+    if (cardItem === null) {
+        console.log("The conversion of this card-item to an instance of 'country' failed")
+        return
+    }
+}
+
 const displayCountryList = async(countryLst: Country[]) => {
     try {
         const realList = renderedList as HTMLElement;
@@ -100,7 +108,7 @@ const displayCountryList = async(countryLst: Country[]) => {
             const  parentElem = elem.parentElement as HTMLElement; 
             if (elem.classList.contains("countryCard")) {
                 const  i = Number(elem.dataset.id);
-                const tgtCard = countryLst[i-1];
+                const tgtCard = countryLst[i-1] as Country;
                 console.log(`${tgtCard}`);
             }
 

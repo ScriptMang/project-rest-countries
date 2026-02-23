@@ -740,6 +740,13 @@ searchInput.addEventListener('change', async ()=>{
         console.error("Fetch error: ", err);
     }
 });
+// renders the detail-page dynamically for the selected country
+function displayDetailsPage(cardItem) {
+    if (cardItem === null) {
+        console.log("The conversion of this card-item to an instance of 'country' failed");
+        return;
+    }
+}
 const displayCountryList = async (countryLst)=>{
     try {
         const realList = renderedList;
