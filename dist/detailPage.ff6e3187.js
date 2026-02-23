@@ -714,7 +714,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"9D8nN":[function(require,module,exports,__globalThis) {
-const extraInfoContainer = document.getElementById("detailsExtraInfoContainer");
+const detailsContainer = document.getElementById("detailsExtraInfoContainer");
 // if (extraInfoContainer === null) {
 //     console.log("extraInfoContainer is null");
 // } else {
@@ -731,68 +731,78 @@ function displayDetailsPage() {
     const countryTitle = document.createElement('div');
     countryTitle.classList = "countryTitle";
     countryTitle.innerText = localStorage.getItem("commonName");
+    // div container to hold  div.extraInfo1 and 
+    // the currencies, top-level-domain, and languages in div.extraInfo2 
+    const extraInfoContainer = document.createElement('div');
+    extraInfoContainer.classList = "extraInfo";
+    // div container that holds country native-name, population,
+    //  region,  sub-region, capital
+    const extraInfoContainer1 = document.createElement('div');
+    extraInfoContainer1.classList = "extraInfo1";
     const nativeName = document.createElement('div');
-    nativeName.classList = "extraInfo1";
+    nativeName.classList = "extraInfoVal";
     const nativeNameText = localStorage.getItem("nativeName");
     const nameLabel = document.createElement('span');
     nameLabel.innerText = "Native Name: ";
     nativeName.appendChild(nameLabel);
     nativeName.append(nativeNameText);
+    extraInfoContainer1.appendChild(nativeName);
     const population = document.createElement('div');
-    population.classList = "extraInfo1";
+    population.classList = "extraInfoVal";
     const populationText = localStorage.getItem("population");
     const populationLabel = document.createElement('span');
     populationLabel.innerText = "Population: ";
     population.appendChild(populationLabel);
     population.append(populationText);
+    extraInfoContainer1.appendChild(population);
     const region = document.createElement('div');
-    region.classList = "extraInfo1";
+    region.classList = "extraInfoVal";
     const regionText = localStorage.getItem("region");
     const regionLabel = document.createElement('span');
     regionLabel.innerText = "Region: ";
     region.appendChild(regionLabel);
     region.append(regionText);
+    extraInfoContainer1.appendChild(region);
     const subRegion = document.createElement('div');
-    subRegion.classList = "extraInfo1";
+    subRegion.classList = "extraInfoVal";
     const subRegionText = localStorage.getItem("subRegion");
     const subRegionLabel = document.createElement('span');
     subRegionLabel.innerText = "Sub Region: ";
     subRegion.appendChild(subRegionLabel);
     subRegion.append(subRegionText);
+    extraInfoContainer1.appendChild(subRegion);
     const capital = document.createElement('div');
-    capital.classList = "extraInfo1";
+    capital.classList = "extraInfoVal";
     const capitalText = localStorage.getItem("capital");
     const capitalLabel = document.createElement('span');
     capitalLabel.innerText = "Capital: ";
     capital.appendChild(capitalLabel);
     capital.append(capitalText);
+    extraInfoContainer1.appendChild(capital);
+    // div container that holds top-level-domain, currencies, and laguages
+    const extraInfoContainer2 = document.createElement('div');
+    extraInfoContainer2.classList = "extraInfo2";
     const topLevelDomain = document.createElement('div');
-    topLevelDomain.classList = "extraInfo2";
+    topLevelDomain.classList = "extraInfoVal";
     const topLevelDomainText = localStorage.getItem("topLevelDomain");
     const topLvlDomainLabel = document.createElement('span');
     topLvlDomainLabel.innerText = "Top Level Domain: ";
     topLevelDomain.appendChild(topLvlDomainLabel);
     topLevelDomain.append(topLevelDomainText);
+    extraInfoContainer2.appendChild(topLevelDomain);
     const currencies = document.createElement('div');
-    currencies.classList = "extraInfo2";
+    currencies.classList = "extraInfoVal";
     const currenciesText = localStorage.getItem("currencies");
     const currenciesLabel = document.createElement('span');
     currenciesLabel.innerText = "Currencies: ";
     currencies.appendChild(currenciesLabel);
     currencies.append(currenciesText);
+    extraInfoContainer2.appendChild(currencies);
     tgtCountryContainer.appendChild(countryTitle);
-    tgtCountryContainer.appendChild(nativeName);
-    tgtCountryContainer.appendChild(population);
-    tgtCountryContainer.appendChild(region);
-    tgtCountryContainer.appendChild(subRegion);
-    tgtCountryContainer.appendChild(capital);
-    tgtCountryContainer.appendChild(topLevelDomain);
-    tgtCountryContainer.appendChild(currencies);
-    // tgtCountryContainer.appendChild(languages);
-    // console.log(tgtCountryContainer);
-    // console.log(extraInfoContainer);
-    // console.log("Hello world from the details page");
-    extraInfoContainer.appendChild(tgtCountryContainer);
+    extraInfoContainer.append(extraInfoContainer1);
+    extraInfoContainer.append(extraInfoContainer2);
+    tgtCountryContainer.append(extraInfoContainer);
+    detailsContainer.appendChild(tgtCountryContainer);
 }
 displayDetailsPage();
 
