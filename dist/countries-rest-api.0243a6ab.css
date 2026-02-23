@@ -233,4 +233,8 @@ ul {
   height: 500px;
   box-shadow: 2px 6px 20px 23px #f5f5f5;
 }
+
+#detailsExtraInfoContainer {
+  margin-left: 80px;
+}
 /*# sourceMappingURL=countries-rest-api.0243a6ab.css.map */

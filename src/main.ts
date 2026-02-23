@@ -5,6 +5,7 @@ console.log("Script: hello-world");
 const renderedList =  document.getElementById("countryListContainer") as HTMLElement;
 const searchInput = document.getElementById("countryInput") as HTMLInputElement;
 const filterCountriesByRegionSelect = document.getElementById("filterByRegionSelect") as HTMLSelectElement;
+const extraInfoContainer = document.getElementById("detailsExtraInfoContainer") as HTMLElement;
 
 searchInput.addEventListener('change', async() => {
     try {
@@ -39,6 +40,18 @@ function displayDetailsPage(cardItem: Country) {
         console.log("The conversion of this card-item to an instance of 'country' failed")
         return
     }
+    window.location.href = "../detailPage.html";
+    document.location.assign("../detailPage.html");
+    const tgtCountryContainer = document.createElement('div');
+    tgtCountryContainer.classList = "tgtCountryCardContainer";
+    tgtCountryContainer.innerText = "Hello details page";
+    // tgtCountryContainer.append();
+
+    console.log(tgtCountryContainer);
+    extraInfoContainer.appendChild(tgtCountryContainer);
+    // const x = cardItem['commonName'];
+    // const y = cardItem['nativeName'];
+
 }
 
 const displayCountryList = async(countryLst: Country[]) => {
@@ -109,12 +122,14 @@ const displayCountryList = async(countryLst: Country[]) => {
             if (elem.classList.contains("countryCard")) {
                 const  i = Number(elem.dataset.id);
                 const tgtCard = countryLst[i-1] as Country;
+                displayDetailsPage(tgtCard);
                 console.log(`${tgtCard}`);
             }
 
             if (parentElem.classList.contains("countryCard")) {
                 const  i = Number(parentElem.dataset.id);
-                const tgtCard = countryLst[i-1];
+                const tgtCard = countryLst[i-1] as Country;
+                displayDetailsPage(tgtCard);
                 console.log(`${tgtCard}`);
             }
          });

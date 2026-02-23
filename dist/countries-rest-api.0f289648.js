@@ -719,6 +719,7 @@ console.log("Script: hello-world");
 const renderedList = document.getElementById("countryListContainer");
 const searchInput = document.getElementById("countryInput");
 const filterCountriesByRegionSelect = document.getElementById("filterByRegionSelect");
+const extraInfoContainer = document.getElementById("detailsExtraInfoContainer");
 searchInput.addEventListener('change', async ()=>{
     try {
         const searchVal = searchInput.value;
@@ -746,6 +747,16 @@ function displayDetailsPage(cardItem) {
         console.log("The conversion of this card-item to an instance of 'country' failed");
         return;
     }
+    window.location.href = "../detailPage.html";
+    document.location.assign("../detailPage.html");
+    const tgtCountryContainer = document.createElement('div');
+    tgtCountryContainer.classList = "tgtCountryCardContainer";
+    tgtCountryContainer.innerText = "Hello details page";
+    // tgtCountryContainer.append();
+    console.log(tgtCountryContainer);
+    extraInfoContainer.appendChild(tgtCountryContainer);
+// const x = cardItem['commonName'];
+// const y = cardItem['nativeName'];
 }
 const displayCountryList = async (countryLst)=>{
     try {
@@ -804,11 +815,13 @@ const displayCountryList = async (countryLst)=>{
             if (elem.classList.contains("countryCard")) {
                 const i = Number(elem.dataset.id);
                 const tgtCard = countryLst[i - 1];
+                displayDetailsPage(tgtCard);
                 console.log(`${tgtCard}`);
             }
             if (parentElem.classList.contains("countryCard")) {
                 const i = Number(parentElem.dataset.id);
                 const tgtCard = countryLst[i - 1];
+                displayDetailsPage(tgtCard);
                 console.log(`${tgtCard}`);
             }
         });
