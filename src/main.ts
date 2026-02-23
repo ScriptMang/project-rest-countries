@@ -6,6 +6,7 @@ const renderedList =  document.getElementById("countryListContainer") as HTMLEle
 const searchInput = document.getElementById("countryInput") as HTMLInputElement;
 const filterCountriesByRegionSelect = document.getElementById("filterByRegionSelect") as HTMLSelectElement;
 
+
 searchInput.addEventListener('change', async() => {
     try {
         const searchVal = searchInput.value;
@@ -37,10 +38,12 @@ const displayCountryList = async(countryLst: Country[]) => {
     try {
         const realList = renderedList as HTMLElement;
         realList.innerHTML = "";
+        let cardCount = 1; 
         if (Array.isArray(countryLst)) {
             countryLst.forEach(elem => {
                 const cardItem = document.createElement('li');
                 cardItem.classList = "countryCard";
+                cardItem.dataset.id = `${cardCount++}`;
 
                 const flagImg = document.createElement('img');
                 flagImg['src'] = elem["flagUrl"];
@@ -114,5 +117,6 @@ const displayDefaultCountryLst = async() => {
     } catch(err) {
         console.error("Fetch error: ", err);
     }
-} 
+}
+
 displayDefaultCountryLst();

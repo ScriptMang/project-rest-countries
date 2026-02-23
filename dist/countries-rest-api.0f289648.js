@@ -744,9 +744,11 @@ const displayCountryList = async (countryLst)=>{
     try {
         const realList = renderedList;
         realList.innerHTML = "";
+        let cardCount = 1;
         if (Array.isArray(countryLst)) countryLst.forEach((elem)=>{
             const cardItem = document.createElement('li');
             cardItem.classList = "countryCard";
+            cardItem.dataset.id = `${cardCount++}`;
             const flagImg = document.createElement('img');
             flagImg['src'] = elem["flagUrl"];
             // create contryDetails container that holds
