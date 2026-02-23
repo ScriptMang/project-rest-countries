@@ -1,6 +1,6 @@
 import { fetchAllCountries, fetchCountry } from './models/Api.js'
 import { Country } from './models/Country.js'
-import {displayDetailsPage} from './details.js'
+// import {displayDetailsPage} from './details.js'
 
 console.log("Script: hello-world");
 const renderedList =  document.getElementById("countryListContainer") as HTMLElement;
@@ -34,6 +34,18 @@ searchInput.addEventListener('change', async() => {
     }
 })
 
+
+function saveTargetCountry(tgtCard: Country) {
+    localStorage.setItem('commonName', tgtCard['commonName']);
+    localStorage.setItem('nativeName', tgtCard['nativeName']);
+    localStorage.setItem('population', `${tgtCard['population']}`);
+    localStorage.setItem('region', tgtCard['region']);
+    localStorage.setItem('subRegion', tgtCard['subRegion']);
+    localStorage.setItem('capital', tgtCard['capital']);
+    localStorage.setItem('topLevelDomain', tgtCard['topLevelDomain']);
+    localStorage.setItem('currencies', `${tgtCard['currencies']}`);
+    localStorage.setItem('languages', `${tgtCard['languages']}`);
+}
 
 
 const displayCountryList = async(countryLst: Country[]) => {
@@ -100,19 +112,24 @@ const displayCountryList = async(countryLst: Country[]) => {
          // selected card-item info and displays it in the deatails page
          realList.addEventListener("click", (e)=>{
             const elem = e.target as HTMLElement;
-            const  parentElem = elem.parentElement as HTMLElement; 
+            const  parentElem = elem.parentElement as HTMLElement;
+            localStorage.clear(); 
             if (elem.classList.contains("countryCard")) {
                 const  i = Number(elem.dataset.id);
                 const tgtCard = countryLst[i-1] as Country;
-                displayDetailsPage(tgtCard);
+                saveTargetCountry(tgtCard);
                 console.log(`${tgtCard}`);
+                // setTimeout(()=>{ window.location.href = "../detailPage.html";}, 12000);
+                window.location.href = "../detailPage.html";
             }
 
             if (parentElem.classList.contains("countryCard")) {
                 const  i = Number(parentElem.dataset.id);
                 const tgtCard = countryLst[i-1] as Country;
-                displayDetailsPage(tgtCard);
+                saveTargetCountry(tgtCard);
                 console.log(`${tgtCard}`);
+                // setTimeout(()=>{ window.location.href = "../detailPage.html";}, 12000);
+                window.location.href = "../detailPage.html";
             }
          });
     } catch(err) {

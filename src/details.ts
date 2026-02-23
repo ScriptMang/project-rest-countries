@@ -1,16 +1,17 @@
-import { Country } from './models/Country.js'
 
-const extraInfoContainer = document.getElementById("detailsExtraInfoContainer") as HTMLElement;
+const extraInfoContainer = document.getElementById("detailsExtraInfoContainer") as HTMLDivElement;
+// if (extraInfoContainer === null) {
+//     console.log("extraInfoContainer is null");
+// } else {
+//     console.log('extraInfoContainer has a value');
+//     const textNode = extraInfoContainer.firstChild as ChildNode
+//     console.log(`${textNode.nodeValue}`)
+// }
+
 
 // renders the detail-page dynamically for the selected country
-export function displayDetailsPage(cardItem: Country) {
+export function displayDetailsPage() {
   
-        if (cardItem === null) {
-            console.log("The conversion of this card-item to an instance of 'country' failed")
-            return
-        }
-        
-        setTimeout(()=>{ window.location.href = "../detailPage.html";}, 12000);
         // document.location.assign("../detailPage.html");
         const tgtCountryContainer = document.createElement('div');
         tgtCountryContainer.classList = "tgtCountryCardContainer";
@@ -18,12 +19,14 @@ export function displayDetailsPage(cardItem: Country) {
 
         const countryTitle = document.createElement('div');
         countryTitle.classList = "classTitle";
-        countryTitle.innerText = cardItem["commonName"];
+        countryTitle.innerText = localStorage.getItem("commonName") as string;
         tgtCountryContainer.appendChild(countryTitle);
         // tgtCountryContainer.append();
 
         console.log(tgtCountryContainer);
+        console.log(extraInfoContainer);
         console.log("Hello world from the details page");
         extraInfoContainer.appendChild(tgtCountryContainer);
-
 }
+
+displayDetailsPage();

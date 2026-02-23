@@ -716,24 +716,24 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"9D8nN":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-// if (extraInfoContainer === null) {
-//     console.log("extraInfoContainer is null");
-// } else {
-//     console.log('extraInfoContainer has a value');
-//     const textNode = extraInfoContainer.firstChild as ChildNode
-//     console.log(`${textNode.nodeValue}`)
-// }
 // renders the detail-page dynamically for the selected country
 parcelHelpers.export(exports, "displayDetailsPage", ()=>displayDetailsPage);
 const extraInfoContainer = document.getElementById("detailsExtraInfoContainer");
-function displayDetailsPage() {
+function displayDetailsPage(cardItem) {
+    if (cardItem === null) {
+        console.log("The conversion of this card-item to an instance of 'country' failed");
+        return;
+    }
+    setTimeout(()=>{
+        window.location.href = "../detailPage.html";
+    }, 12000);
     // document.location.assign("../detailPage.html");
     const tgtCountryContainer = document.createElement('div');
     tgtCountryContainer.classList = "tgtCountryCardContainer";
     tgtCountryContainer.innerText = "Hello details page";
     const countryTitle = document.createElement('div');
     countryTitle.classList = "classTitle";
-    countryTitle.innerText = localStorage.getItem("commonName");
+    countryTitle.innerText = cardItem["commonName"];
     tgtCountryContainer.appendChild(countryTitle);
     // tgtCountryContainer.append();
     console.log(tgtCountryContainer);
@@ -741,38 +741,7 @@ function displayDetailsPage() {
     console.log("Hello world from the details page");
     extraInfoContainer.appendChild(tgtCountryContainer);
 }
-displayDetailsPage();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["MsJEM","9D8nN"], "9D8nN", "parcelRequire8ec7", {})
 
-},{}]},["MsJEM","9D8nN"], "9D8nN", "parcelRequire8ec7", {})
-
-//# sourceMappingURL=detailPage.ff6e3187.js.map
+//# sourceMappingURL=countries-rest-api.ff6e3187.js.map

@@ -715,7 +715,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"gNc1f":[function(require,module,exports,__globalThis) {
 var _apiJs = require("./models/Api.js");
-var _detailsJs = require("./details.js");
+// import {displayDetailsPage} from './details.js'
 console.log("Script: hello-world");
 const renderedList = document.getElementById("countryListContainer");
 const searchInput = document.getElementById("countryInput");
@@ -741,6 +741,17 @@ searchInput.addEventListener('change', async ()=>{
         console.error("Fetch error: ", err);
     }
 });
+function saveTargetCountry(tgtCard) {
+    localStorage.setItem('commonName', tgtCard['commonName']);
+    localStorage.setItem('nativeName', tgtCard['nativeName']);
+    localStorage.setItem('population', `${tgtCard['population']}`);
+    localStorage.setItem('region', tgtCard['region']);
+    localStorage.setItem('subRegion', tgtCard['subRegion']);
+    localStorage.setItem('capital', tgtCard['capital']);
+    localStorage.setItem('topLevelDomain', tgtCard['topLevelDomain']);
+    localStorage.setItem('currencies', `${tgtCard['currencies']}`);
+    localStorage.setItem('languages', `${tgtCard['languages']}`);
+}
 const displayCountryList = async (countryLst)=>{
     try {
         const realList = renderedList;
@@ -795,17 +806,22 @@ const displayCountryList = async (countryLst)=>{
         realList.addEventListener("click", (e)=>{
             const elem = e.target;
             const parentElem = elem.parentElement;
+            localStorage.clear();
             if (elem.classList.contains("countryCard")) {
                 const i = Number(elem.dataset.id);
                 const tgtCard = countryLst[i - 1];
-                (0, _detailsJs.displayDetailsPage)(tgtCard);
+                saveTargetCountry(tgtCard);
                 console.log(`${tgtCard}`);
+                // setTimeout(()=>{ window.location.href = "../detailPage.html";}, 12000);
+                window.location.href = "../detailPage.html";
             }
             if (parentElem.classList.contains("countryCard")) {
                 const i = Number(parentElem.dataset.id);
                 const tgtCard = countryLst[i - 1];
-                (0, _detailsJs.displayDetailsPage)(tgtCard);
+                saveTargetCountry(tgtCard);
                 console.log(`${tgtCard}`);
+                // setTimeout(()=>{ window.location.href = "../detailPage.html";}, 12000);
+                window.location.href = "../detailPage.html";
             }
         });
     } catch (err) {
@@ -833,7 +849,7 @@ const displayDefaultCountryLst = async ()=>{
 };
 displayDefaultCountryLst();
 
-},{"./models/Api.js":"1geoP","./details.js":"9D8nN"}],"1geoP":[function(require,module,exports,__globalThis) {
+},{"./models/Api.js":"1geoP"}],"1geoP":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllCountries", ()=>fetchAllCountries);
@@ -899,6 +915,36 @@ class Country {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["elbaT","gNc1f"], "gNc1f", "parcelRequire8ec7", {})
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}]},["elbaT","gNc1f"], "gNc1f", "parcelRequire8ec7", {})
 
 //# sourceMappingURL=countries-rest-api.0f289648.js.map
