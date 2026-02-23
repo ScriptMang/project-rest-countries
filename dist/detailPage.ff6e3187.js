@@ -727,10 +727,9 @@ function displayDetailsPage() {
     // create container to hold all the country info
     const tgtCountryContainer = document.createElement('div');
     tgtCountryContainer.classList = "tgtCountryCardContainer";
-    tgtCountryContainer.innerText = "Hello details page";
     // common name of the country
     const countryTitle = document.createElement('div');
-    countryTitle.classList = "classTitle";
+    countryTitle.classList = "countryTitle";
     countryTitle.innerText = localStorage.getItem("commonName");
     const nativeName = document.createElement('div');
     nativeName.classList = "extraInfo1";

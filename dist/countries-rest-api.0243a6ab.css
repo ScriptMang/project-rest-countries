@@ -236,7 +236,14 @@ ul {
   box-shadow: 2px 6px 20px 23px #f5f5f5;
 }
 
-#detailsExtraInfoContainer {
-  margin-left: 80px;
+.tgtCountryCardContainer {
+  line-height: 1.6;
+}
+
+.tgtCountryCardContainer .countryTitle {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: bold;
 }
 /*# sourceMappingURL=countries-rest-api.0243a6ab.css.map */
