@@ -789,6 +789,22 @@ const displayCountryList = async (countryLst)=>{
             cardItem.appendChild(countryDetails);
             realList.appendChild(cardItem);
         });
+        // An event-listener for the rendered list that on click grabs the
+        // selected card-item info and displays it in the deatails page
+        realList.addEventListener("click", (e)=>{
+            const elem = e.target;
+            const parentElem = elem.parentElement;
+            if (elem.classList.contains("countryCard")) {
+                const i = Number(elem.dataset.id);
+                const tgtCard = countryLst[i - 1];
+                console.log(`${tgtCard}`);
+            }
+            if (parentElem.classList.contains("countryCard")) {
+                const i = Number(parentElem.dataset.id);
+                const tgtCard = countryLst[i - 1];
+                console.log(`${tgtCard}`);
+            }
+        });
     } catch (err) {
         console.error("Fetch error: ", err);
     }

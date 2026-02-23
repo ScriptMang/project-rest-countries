@@ -6,7 +6,6 @@ const renderedList =  document.getElementById("countryListContainer") as HTMLEle
 const searchInput = document.getElementById("countryInput") as HTMLInputElement;
 const filterCountriesByRegionSelect = document.getElementById("filterByRegionSelect") as HTMLSelectElement;
 
-
 searchInput.addEventListener('change', async() => {
     try {
         const searchVal = searchInput.value;
@@ -93,6 +92,24 @@ const displayCountryList = async(countryLst: Country[]) => {
                 realList.appendChild(cardItem);
             });
          }
+
+         // An event-listener for the rendered list that on click grabs the
+         // selected card-item info and displays it in the deatails page
+         realList.addEventListener("click", (e)=>{
+            const elem = e.target as HTMLElement;
+            const  parentElem = elem.parentElement as HTMLElement; 
+            if (elem.classList.contains("countryCard")) {
+                const  i = Number(elem.dataset.id);
+                const tgtCard = countryLst[i-1];
+                console.log(`${tgtCard}`);
+            }
+
+            if (parentElem.classList.contains("countryCard")) {
+                const  i = Number(parentElem.dataset.id);
+                const tgtCard = countryLst[i-1];
+                console.log(`${tgtCard}`);
+            }
+         });
     } catch(err) {
         console.error("Fetch error: ", err);
     }
