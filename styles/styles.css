@@ -94,6 +94,14 @@ ul {
     box-shadow: 2px 5px 12px 5px whitesmoke;
 }
 
+.countryCard:hover {
+    cursor: pointer;
+}
+
+.countryCard:active {
+border: solid black 3px;
+}
+
 .countryCard img{
     height: 250px;
     width: 435px;  
