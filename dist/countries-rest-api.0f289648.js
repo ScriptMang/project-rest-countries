@@ -744,6 +744,7 @@ searchInput.addEventListener('change', async ()=>{
 function saveTargetCountry(tgtCard) {
     localStorage.setItem('commonName', tgtCard['commonName']);
     localStorage.setItem('nativeName', tgtCard['nativeName']);
+    console.log("native name is: ", tgtCard['nativeName']);
     localStorage.setItem('population', `${tgtCard['population']}`);
     localStorage.setItem('region', tgtCard['region']);
     localStorage.setItem('subRegion', tgtCard['subRegion']);
@@ -877,6 +878,7 @@ async function fetchCountry(tgtCountry) {
         const jsonData = await resp.json();
         const countryLst = [];
         jsonData.forEach((elem)=>{
+            console.log(elem);
             const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
             countryLst.push(tempCountry);
         });

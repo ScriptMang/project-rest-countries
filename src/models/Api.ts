@@ -38,6 +38,7 @@ export async function fetchCountry(tgtCountry: string) {
         const jsonData = await resp.json();
         const countryLst: Country[] = [];
         jsonData.forEach((elem: any) => {
+            console.log(elem);
             const tempCountry: Country = new Country(
                 elem.flags['png'],
                 elem.name['common'],

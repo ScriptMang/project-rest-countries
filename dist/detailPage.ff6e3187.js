@@ -714,8 +714,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"9D8nN":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
+const extraInfoContainer = document.getElementById("detailsExtraInfoContainer");
 // if (extraInfoContainer === null) {
 //     console.log("extraInfoContainer is null");
 // } else {
@@ -724,54 +723,54 @@ parcelHelpers.defineInteropFlag(exports);
 //     console.log(`${textNode.nodeValue}`)
 // }
 // renders the detail-page dynamically for the selected country
-parcelHelpers.export(exports, "displayDetailsPage", ()=>displayDetailsPage);
-const extraInfoContainer = document.getElementById("detailsExtraInfoContainer");
 function displayDetailsPage() {
-    // document.location.assign("../detailPage.html");
+    // create container to hold all the country info
     const tgtCountryContainer = document.createElement('div');
     tgtCountryContainer.classList = "tgtCountryCardContainer";
     tgtCountryContainer.innerText = "Hello details page";
+    // common name of the country
     const countryTitle = document.createElement('div');
     countryTitle.classList = "classTitle";
     countryTitle.innerText = localStorage.getItem("commonName");
+    const nativeName = document.createElement('div');
+    nativeName.classList = "extraInfo1";
+    const nativeNameText = localStorage.getItem("nativeName");
+    const nameLabel = document.createElement('span');
+    nameLabel.innerText = "Native Name: ";
+    nativeName.appendChild(nameLabel);
+    nativeName.append(nativeNameText);
+    const population = document.createElement('div');
+    population.classList = "extraInfo1";
+    const populationText = localStorage.getItem("population");
+    const populationLabel = document.createElement('span');
+    populationLabel.innerText = "Population: ";
+    population.appendChild(populationLabel);
+    population.append(populationText);
+    const region = document.createElement('div');
+    region.classList = "extraInfo1";
+    const regionText = localStorage.getItem("region");
+    const regionLabel = document.createElement('span');
+    regionLabel.innerText = "Region: ";
+    region.appendChild(regionLabel);
+    region.append(regionText);
+    const capital = document.createElement('div');
+    capital.classList = "extraInfo1";
+    const capitalText = localStorage.getItem("capital");
+    const capitalLabel = document.createElement('span');
+    capitalLabel.innerText = "Capital: ";
+    capital.appendChild(capitalLabel);
+    capital.append(capitalText);
     tgtCountryContainer.appendChild(countryTitle);
-    // tgtCountryContainer.append();
-    console.log(tgtCountryContainer);
-    console.log(extraInfoContainer);
-    console.log("Hello world from the details page");
+    tgtCountryContainer.appendChild(nativeName);
+    tgtCountryContainer.appendChild(population);
+    tgtCountryContainer.appendChild(region);
+    tgtCountryContainer.appendChild(capital);
+    // console.log(tgtCountryContainer);
+    // console.log(extraInfoContainer);
+    // console.log("Hello world from the details page");
     extraInfoContainer.appendChild(tgtCountryContainer);
 }
 displayDetailsPage();
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
 
 },{}]},["MsJEM","9D8nN"], "9D8nN", "parcelRequire8ec7", {})
 

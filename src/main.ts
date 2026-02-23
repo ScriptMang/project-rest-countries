@@ -38,6 +38,7 @@ searchInput.addEventListener('change', async() => {
 function saveTargetCountry(tgtCard: Country) {
     localStorage.setItem('commonName', tgtCard['commonName']);
     localStorage.setItem('nativeName', tgtCard['nativeName']);
+    console.log("native name is: ", tgtCard['nativeName']);
     localStorage.setItem('population', `${tgtCard['population']}`);
     localStorage.setItem('region', tgtCard['region']);
     localStorage.setItem('subRegion', tgtCard['subRegion']);
