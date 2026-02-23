@@ -207,7 +207,7 @@
       });
     }
   }
-})({"elbaT":[function(require,module,exports,__globalThis) {
+})({"MsJEM":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -215,7 +215,7 @@ var HMR_SERVER_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "4943a1030f289648";
+module.bundle.HMR_BUNDLE_ID = "379b61ecff6e3187";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_SERVER_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -713,192 +713,64 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     }
 }
 
-},{}],"gNc1f":[function(require,module,exports,__globalThis) {
-var _apiJs = require("./models/Api.js");
-var _detailsJs = require("./details.js");
-console.log("Script: hello-world");
-const renderedList = document.getElementById("countryListContainer");
-const searchInput = document.getElementById("countryInput");
-const filterCountriesByRegionSelect = document.getElementById("filterByRegionSelect");
-searchInput.addEventListener('change', async ()=>{
-    try {
-        const searchVal = searchInput.value;
-        let tempCountryLst;
-        if (searchVal === "") tempCountryLst = await (0, _apiJs.fetchAllCountries)();
-        else tempCountryLst = await (0, _apiJs.fetchCountry)(searchVal);
-        displayCountryList(tempCountryLst);
-        filterCountriesByRegionSelect.addEventListener("change", ()=>{
-            const regionVal = filterCountriesByRegionSelect.value;
-            if (regionVal === "Label") {
-                displayCountryList(tempCountryLst);
-                return;
-            }
-            const filteredLst = tempCountryLst.filter((elem)=>elem['region'] === regionVal);
-            console.log(regionVal);
-            displayCountryList(filteredLst);
-        });
-    } catch (err) {
-        console.error("Fetch error: ", err);
-    }
-});
-const displayCountryList = async (countryLst)=>{
-    try {
-        const realList = renderedList;
-        realList.innerHTML = "";
-        let cardCount = 1;
-        if (Array.isArray(countryLst)) countryLst.forEach((elem)=>{
-            const cardItem = document.createElement('li');
-            cardItem.classList = "countryCard";
-            cardItem.dataset.id = `${cardCount++}`;
-            const flagImg = document.createElement('img');
-            flagImg['src'] = elem["flagUrl"];
-            // create contryDetails container that holds
-            //  countryName and countryInfo container
-            const countryDetails = document.createElement('div');
-            countryDetails.classList = "countryDetails";
-            const countryName = document.createElement('div');
-            countryName.classList = "countryName";
-            countryName.innerText = elem['commonName'];
-            // creates countryInfo container to hold 
-            // population, region, and capital info 
-            const countryInfo = document.createElement('div');
-            countryInfo.classList = "countryInfo";
-            const population = document.createElement('div');
-            population.classList = "countryVal";
-            const popLabel = document.createElement('span');
-            popLabel.innerText = 'Population: ';
-            population.appendChild(popLabel);
-            population.append(`${elem['population']}`);
-            const region = document.createElement('div');
-            region.classList = "countryVal";
-            const regionLabel = document.createElement('span');
-            regionLabel.innerText = "Region: ";
-            region.appendChild(regionLabel);
-            region.append(elem['region']);
-            const capital = document.createElement('div');
-            capital.classList = "countryVal";
-            const capitalLabel = document.createElement('span');
-            capitalLabel.innerText = "Capital: ";
-            capital.appendChild(capitalLabel);
-            capital.append(elem['capital']);
-            cardItem.appendChild(flagImg);
-            countryDetails.appendChild(countryName);
-            countryInfo.appendChild(population);
-            countryInfo.appendChild(region);
-            countryInfo.appendChild(capital);
-            countryDetails.appendChild(countryInfo);
-            cardItem.appendChild(countryDetails);
-            realList.appendChild(cardItem);
-        });
-        // An event-listener for the rendered list that on click grabs the
-        // selected card-item info and displays it in the deatails page
-        realList.addEventListener("click", (e)=>{
-            const elem = e.target;
-            const parentElem = elem.parentElement;
-            if (elem.classList.contains("countryCard")) {
-                const i = Number(elem.dataset.id);
-                const tgtCard = countryLst[i - 1];
-                (0, _detailsJs.displayDetailsPage)(tgtCard);
-                console.log(`${tgtCard}`);
-            }
-            if (parentElem.classList.contains("countryCard")) {
-                const i = Number(parentElem.dataset.id);
-                const tgtCard = countryLst[i - 1];
-                (0, _detailsJs.displayDetailsPage)(tgtCard);
-                console.log(`${tgtCard}`);
-            }
-        });
-    } catch (err) {
-        console.error("Fetch error: ", err);
-    }
-};
-// displays all the countries as cards in the list
-const displayDefaultCountryLst = async ()=>{
-    try {
-        const countryList = await (0, _apiJs.fetchAllCountries)();
-        displayCountryList(countryList);
-        filterCountriesByRegionSelect.addEventListener("change", ()=>{
-            const regionVal = filterCountriesByRegionSelect.value;
-            if (regionVal === "Label") {
-                displayCountryList(countryList);
-                return;
-            }
-            const filteredLst = countryList.filter((elem)=>elem['region'] === regionVal);
-            console.log(regionVal);
-            displayCountryList(filteredLst);
-        });
-    } catch (err) {
-        console.error("Fetch error: ", err);
-    }
-};
-displayDefaultCountryLst();
-
-},{"./models/Api.js":"1geoP","./details.js":"9D8nN"}],"1geoP":[function(require,module,exports,__globalThis) {
+},{}],"9D8nN":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "fetchAllCountries", ()=>fetchAllCountries);
-parcelHelpers.export(exports, "fetchCountry", ()=>fetchCountry);
-var _countryJs = require("./Country.js");
-async function fetchAllCountries() {
-    try {
-        const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital');
-        if (!resp.ok) throw new Error("response failed");
-        const jsonData = await resp.json();
-        const countryLst = [];
-        jsonData.forEach((elem)=>{
-            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
-            countryLst.push(tempCountry);
+// renders the detail-page dynamically for the selected country
+parcelHelpers.export(exports, "displayDetailsPage", ()=>displayDetailsPage);
+const extraInfoContainer = document.getElementById("detailsExtraInfoContainer");
+function displayDetailsPage(cardItem) {
+    if (cardItem === null) {
+        console.log("The conversion of this card-item to an instance of 'country' failed");
+        return;
+    }
+    setTimeout(()=>{
+        window.location.href = "../detailPage.html";
+    }, 12000);
+    // document.location.assign("../detailPage.html");
+    const tgtCountryContainer = document.createElement('div');
+    tgtCountryContainer.classList = "tgtCountryCardContainer";
+    tgtCountryContainer.innerText = "Hello details page";
+    const countryTitle = document.createElement('div');
+    countryTitle.classList = "classTitle";
+    countryTitle.innerText = cardItem["commonName"];
+    tgtCountryContainer.appendChild(countryTitle);
+    // tgtCountryContainer.append();
+    console.log(tgtCountryContainer);
+    console.log("Hello world from the details page");
+    extraInfoContainer.appendChild(tgtCountryContainer);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
         });
-        return countryLst;
-    } catch (err) {
-        console.error("Fetch error: ", err);
-    }
-}
-async function fetchCountry(tgtCountry) {
-    try {
-        const resp = await fetch(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital`);
-        if (!resp.ok) throw new Error("response failed");
-        const jsonData = await resp.json();
-        const countryLst = [];
-        jsonData.forEach((elem)=>{
-            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
-            countryLst.push(tempCountry);
-        });
-        return countryLst;
-    } catch (err) {
-        console.error("Fetch error: ", err);
-    }
-}
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
 
-},{"./Country.js":"5zZ6X","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5zZ6X":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Country", ()=>Country);
-class Country {
-    flagUrl;
-    commonName;
-    nativeName;
-    population;
-    region;
-    subRegion;
-    capital;
-    topLevelDomain;
-    currencies;
-    languages;
-    constructor(flagUrl, commonName, nativeName, population, region, subRegion, capital, topLevelDomain, currencies, languages){
-        this.flagUrl = flagUrl;
-        this.commonName = commonName;
-        this.nativeName = nativeName;
-        this.population = population;
-        this.region = region;
-        this.subRegion = subRegion;
-        this.capital = capital;
-        this.topLevelDomain = topLevelDomain;
-        this.currencies = currencies;
-        this.languages = languages;
-    }
-}
+},{}]},["MsJEM","9D8nN"], "9D8nN", "parcelRequire8ec7", {})
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["elbaT","gNc1f"], "gNc1f", "parcelRequire8ec7", {})
-
-//# sourceMappingURL=countries-rest-api.0f289648.js.map
+//# sourceMappingURL=detailPage.ff6e3187.js.map
