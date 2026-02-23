@@ -236,7 +236,9 @@ border: solid black 3px;
     background-color: white;
 }
 
-#detailsCountryImgContainer {
+#detailsExtraInfoContainer {
+    display: flex;
+    gap: 80px;
     margin-left: 80px;
 }
 

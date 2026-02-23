@@ -224,8 +224,10 @@ ul {
   font-size: 16px;
 }
 
-#detailsCountryImgContainer {
+#detailsExtraInfoContainer {
+  gap: 80px;
   margin-left: 80px;
+  display: flex;
 }
 
 #countryFlag {
