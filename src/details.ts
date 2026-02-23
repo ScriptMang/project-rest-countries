@@ -48,6 +48,15 @@ function displayDetailsPage() {
         regionLabel.innerText = "Region: "; 
         region.appendChild(regionLabel);
         region.append(regionText);
+
+        
+        const subRegion = document.createElement('div');
+        subRegion.classList = "extraInfo1";
+        const subRegionText = localStorage.getItem("subRegion") as string;
+        const subRegionLabel = document.createElement('span');
+        subRegionLabel.innerText = "Sub Region: "; 
+        subRegion.appendChild(subRegionLabel);
+        subRegion.append(subRegionText);
        
         
         const capital = document.createElement('div');
@@ -59,11 +68,11 @@ function displayDetailsPage() {
         capital.append(capitalText);
        
 
-
         tgtCountryContainer.appendChild(countryTitle);
         tgtCountryContainer.appendChild(nativeName);
         tgtCountryContainer.appendChild(population);
         tgtCountryContainer.appendChild(region);
+        tgtCountryContainer.appendChild(subRegion);
         tgtCountryContainer.appendChild(capital);
 
 
