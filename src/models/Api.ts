@@ -21,6 +21,7 @@ function stringifyLanguages(langs: any): string[] {
     let charArr = [...strVals];
     const lastCharIdx: number =  charArr.length -1;
     charArr[lastCharIdx] = "";
+    strVals= charArr.join("");
 
     const rsltArr = strVals.split(',');
     return rsltArr;

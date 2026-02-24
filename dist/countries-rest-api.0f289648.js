@@ -882,6 +882,7 @@ function stringifyLanguages(langs) {
     ];
     const lastCharIdx = charArr.length - 1;
     charArr[lastCharIdx] = "";
+    strVals = charArr.join("");
     const rsltArr = strVals.split(',');
     return rsltArr;
 }
