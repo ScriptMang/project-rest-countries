@@ -82,14 +82,14 @@ export async function fetchCountry(tgtCountry: string) {
             const tempCountry: Country = new Country(
                 elem.flags['png'],
                 elem.name['common'],
-                elem.name['native'],
+                stringifyNativeName(elem.name['nativeName']),
                 elem['population'],
                 elem['region'],
                 elem['subregion'],
                 elem['capital'],
                 elem['topLevelDomain'],
-                elem['currencies'],
-                elem['languages']
+                stringifyCurrency(elem['currencies']),
+                stringifyLanguages(elem['languages'])
             );
             countryLst.push(tempCountry);
         });
