@@ -742,6 +742,7 @@ searchInput.addEventListener('change', async ()=>{
     }
 });
 function saveTargetCountry(tgtCard) {
+    localStorage.setItem('flagUrl', tgtCard['flagUrl']);
     localStorage.setItem('commonName', tgtCard['commonName']);
     localStorage.setItem('nativeName', tgtCard['nativeName']);
     console.log("native name is: ", tgtCard['nativeName']);

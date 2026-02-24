@@ -1,5 +1,6 @@
 
 const detailsContainer = document.getElementById("detailsExtraInfoContainer") as HTMLDivElement;
+// const countryFlag = document.getElementById("countryFlag") as HTMLImageElement;
 // if (extraInfoContainer === null) {
 //     console.log("extraInfoContainer is null");
 // } else {
@@ -12,6 +13,11 @@ const detailsContainer = document.getElementById("detailsExtraInfoContainer") as
 // renders the detail-page dynamically for the selected country
 function displayDetailsPage() {
   
+        const countryFlag = document.createElement('img');
+        countryFlag.id = "countryFlag";
+        countryFlag.src = localStorage.getItem('flagUrl') as string;
+        countryFlag.alt = "The country flag of "+ localStorage.getItem('common') as string;
+
         // create container to hold all the country info
         const tgtCountryContainer = document.createElement('div');
         tgtCountryContainer.classList = "tgtCountryCardContainer";
@@ -123,6 +129,7 @@ function displayDetailsPage() {
         extraInfoContainer.append(extraInfoContainer2);
         tgtCountryContainer.append(extraInfoContainer);
        
+        detailsContainer.appendChild(countryFlag);
         detailsContainer.appendChild(tgtCountryContainer);
 }
 
