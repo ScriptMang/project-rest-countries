@@ -107,6 +107,16 @@ function displayDetailsPage() {
        currencies.appendChild(currenciesLabel);
        currencies.append(currenciesText);
        extraInfoContainer2.appendChild(currencies);
+
+
+       const languages = document.createElement('div');
+       languages.classList = "extraInfoVal";
+       const langsText = localStorage.getItem("languages") as string;
+       const langsLabel = document.createElement('span');
+       langsLabel.innerText = "Languages: "; 
+       languages.appendChild(langsLabel);
+       languages.append(langsText);
+       extraInfoContainer2.appendChild(languages);
        
         tgtCountryContainer.appendChild(countryTitle); 
         extraInfoContainer.append(extraInfoContainer1);
