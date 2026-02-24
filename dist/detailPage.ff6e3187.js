@@ -715,6 +715,10 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"9D8nN":[function(require,module,exports,__globalThis) {
 const detailsContainer = document.getElementById("detailsExtraInfoContainer");
+const backButton = document.getElementById("backButton");
+backButton.addEventListener('click', ()=>{
+    document.location.href = '../index.html';
+});
 // renders the detail-page dynamically for the selected country
 function displayDetailsPage() {
     const countryFlag = document.createElement('img');

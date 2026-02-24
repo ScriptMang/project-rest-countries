@@ -1,5 +1,10 @@
 
 const detailsContainer = document.getElementById("detailsExtraInfoContainer") as HTMLDivElement;
+const backButton = document.getElementById("backButton") as HTMLButtonElement;
+
+backButton.addEventListener('click', ()=>{
+        document.location.href = '../index.html';
+})
 
 // renders the detail-page dynamically for the selected country
 function displayDetailsPage() {
