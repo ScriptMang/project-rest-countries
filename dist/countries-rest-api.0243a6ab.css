@@ -249,6 +249,15 @@ ul {
 
 .extraInfo {
   gap: 160px;
+  font-family: Nunito Sans, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
   display: flex;
+}
+
+.extraInfo span {
+  font-family: Nunito Sans, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
 }
 /*# sourceMappingURL=countries-rest-api.0243a6ab.css.map */
