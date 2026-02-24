@@ -1,14 +1,5 @@
 
 const detailsContainer = document.getElementById("detailsExtraInfoContainer") as HTMLDivElement;
-// const countryFlag = document.getElementById("countryFlag") as HTMLImageElement;
-// if (extraInfoContainer === null) {
-//     console.log("extraInfoContainer is null");
-// } else {
-//     console.log('extraInfoContainer has a value');
-//     const textNode = extraInfoContainer.firstChild as ChildNode
-//     console.log(`${textNode.nodeValue}`)
-// }
-
 
 // renders the detail-page dynamically for the selected country
 function displayDetailsPage() {

@@ -715,8 +715,6 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"gNc1f":[function(require,module,exports,__globalThis) {
 var _apiJs = require("./models/Api.js");
-// import {displayDetailsPage} from './details.js'
-console.log("Script: hello-world");
 const renderedList = document.getElementById("countryListContainer");
 const searchInput = document.getElementById("countryInput");
 const filterCountriesByRegionSelect = document.getElementById("filterByRegionSelect");

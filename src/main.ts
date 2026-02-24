@@ -1,8 +1,6 @@
 import { fetchAllCountries, fetchCountry } from './models/Api.js'
 import { Country } from './models/Country.js'
-// import {displayDetailsPage} from './details.js'
 
-console.log("Script: hello-world");
 const renderedList =  document.getElementById("countryListContainer") as HTMLElement;
 const searchInput = document.getElementById("countryInput") as HTMLInputElement;
 const filterCountriesByRegionSelect = document.getElementById("filterByRegionSelect") as HTMLSelectElement;
