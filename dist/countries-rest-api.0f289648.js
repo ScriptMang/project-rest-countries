@@ -856,6 +856,20 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllCountries", ()=>fetchAllCountries);
 parcelHelpers.export(exports, "fetchCountry", ()=>fetchCountry);
 var _countryJs = require("./Country.js");
+// takes the currency object and returns the string
+function stringifyCurrency(currencies) {
+    let strVal = "";
+    for(let key in currencies){
+        strVal = currencies[key]['name'];
+        console.log(` currency is ${key}: ${strVal}`);
+        return [
+            strVal
+        ];
+    }
+    return [
+        strVal
+    ];
+}
 async function fetchAllCountries() {
     try {
         const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,languages');
@@ -864,7 +878,7 @@ async function fetchAllCountries() {
         const countryLst = [];
         jsonData.forEach((elem)=>{
             console.log(elem);
-            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subregion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
+            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subregion'], elem['capital'], elem['topLevelDomain'], stringifyCurrency(elem['currencies']), elem['languages']);
             countryLst.push(tempCountry);
         });
         return countryLst;

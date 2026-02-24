@@ -1,5 +1,17 @@
 import {Country} from './Country.js';
 
+// takes the currency object and returns the string
+function stringifyCurrency(currencies: any): string[] {
+    let strVal = ""; 
+    for (let key in currencies) {
+        strVal = currencies[key]['name'];
+        console.log(` currency is ${key}: ${strVal}`);
+        return [strVal];
+    }
+    return [strVal];
+}
+
+
 export async function fetchAllCountries() {
     try {
         const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,languages');
@@ -19,7 +31,7 @@ export async function fetchAllCountries() {
                 elem['subregion'],
                 elem['capital'],
                 elem['topLevelDomain'],
-                elem['currencies'],
+                stringifyCurrency(elem['currencies']),
                 elem['languages']
             );
             countryLst.push(tempCountry);
