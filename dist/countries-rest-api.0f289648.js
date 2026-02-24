@@ -886,6 +886,16 @@ function stringifyLanguages(langs) {
     const rsltArr = strVals.split(',');
     return rsltArr;
 }
+// takes nativeName object and returns the first language native name as string
+function stringifyNativeName(nativeNames) {
+    let strVal = "";
+    for(let key in nativeNames){
+        strVal = nativeNames[key]['common'];
+        console.log(` language is ${key}: ${strVal}`);
+        return strVal;
+    }
+    return "";
+}
 async function fetchAllCountries() {
     try {
         const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,languages');
@@ -894,7 +904,7 @@ async function fetchAllCountries() {
         const countryLst = [];
         jsonData.forEach((elem)=>{
             console.log(elem);
-            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subregion'], elem['capital'], elem['topLevelDomain'], stringifyCurrency(elem['currencies']), stringifyLanguages(elem['languages']));
+            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], stringifyNativeName(elem.name['nativeName']), elem['population'], elem['region'], elem['subregion'], elem['capital'], elem['topLevelDomain'], stringifyCurrency(elem['currencies']), stringifyLanguages(elem['languages']));
             countryLst.push(tempCountry);
         });
         return countryLst;

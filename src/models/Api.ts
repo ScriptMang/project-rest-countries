@@ -27,6 +27,17 @@ function stringifyLanguages(langs: any): string[] {
     return rsltArr;
 }
 
+// takes nativeName object and returns the first language native name as string
+function stringifyNativeName(nativeNames: any): string  {
+    let strVal= ""; 
+    for (let key in nativeNames) {
+        strVal = nativeNames[key]['common'];
+        console.log(` language is ${key}: ${strVal}`);
+        return strVal;
+    }
+    return "";
+}
+
 
 export async function fetchAllCountries() {
     try {
@@ -41,7 +52,7 @@ export async function fetchAllCountries() {
             const tempCountry: Country = new Country(
                 elem.flags['png'],
                 elem.name['common'],
-                elem.name['native'],
+                stringifyNativeName(elem.name['nativeName']),
                 elem['population'],
                 elem['region'],
                 elem['subregion'],
