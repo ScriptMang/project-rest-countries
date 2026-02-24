@@ -858,12 +858,13 @@ parcelHelpers.export(exports, "fetchCountry", ()=>fetchCountry);
 var _countryJs = require("./Country.js");
 async function fetchAllCountries() {
     try {
-        const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital');
+        const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,languages');
         if (!resp.ok) throw new Error("response failed");
         const jsonData = await resp.json();
         const countryLst = [];
         jsonData.forEach((elem)=>{
-            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
+            console.log(elem);
+            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subregion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
             countryLst.push(tempCountry);
         });
         return countryLst;
@@ -873,13 +874,13 @@ async function fetchAllCountries() {
 }
 async function fetchCountry(tgtCountry) {
     try {
-        const resp = await fetch(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital`);
+        const resp = await fetch(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,languages`);
         if (!resp.ok) throw new Error("response failed");
         const jsonData = await resp.json();
         const countryLst = [];
         jsonData.forEach((elem)=>{
-            console.log(elem);
-            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subRegion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
+            // console.log(elem);
+            const tempCountry = new (0, _countryJs.Country)(elem.flags['png'], elem.name['common'], elem.name['native'], elem['population'], elem['region'], elem['subregion'], elem['capital'], elem['topLevelDomain'], elem['currencies'], elem['languages']);
             countryLst.push(tempCountry);
         });
         return countryLst;

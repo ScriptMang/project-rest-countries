@@ -2,20 +2,21 @@ import {Country} from './Country.js';
 
 export async function fetchAllCountries() {
     try {
-        const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital');
+        const resp = await fetch('https://restcountries.com/v3.1/all?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,languages');
         if (!resp.ok) {
             throw new Error("response failed");
         }
         const jsonData = await resp.json();
         const countryLst: Country[] = [];
         jsonData.forEach((elem: any) => {
+            console.log(elem);
             const tempCountry: Country = new Country(
                 elem.flags['png'],
                 elem.name['common'],
                 elem.name['native'],
                 elem['population'],
                 elem['region'],
-                elem['subRegion'],
+                elem['subregion'],
                 elem['capital'],
                 elem['topLevelDomain'],
                 elem['currencies'],
@@ -31,21 +32,21 @@ export async function fetchAllCountries() {
 
 export async function fetchCountry(tgtCountry: string) {
     try {
-        const resp = await fetch(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital`);
+        const resp = await fetch(`https://restcountries.com/v3.1/name/${tgtCountry}?fields=flags,name,population,region,capital,subregion,topLevelDomain,currencies,languages`);
         if (!resp.ok) {
             throw new Error("response failed");
         }
         const jsonData = await resp.json();
         const countryLst: Country[] = [];
         jsonData.forEach((elem: any) => {
-            console.log(elem);
+            // console.log(elem);
             const tempCountry: Country = new Country(
                 elem.flags['png'],
                 elem.name['common'],
                 elem.name['native'],
                 elem['population'],
                 elem['region'],
-                elem['subRegion'],
+                elem['subregion'],
                 elem['capital'],
                 elem['topLevelDomain'],
                 elem['currencies'],
