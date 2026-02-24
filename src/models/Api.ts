@@ -1,6 +1,6 @@
 import {Country} from './Country.js';
 
-// takes the currency object and returns the string
+// takes the currency object and returns the string[]
 function stringifyCurrency(currencies: any): string[] {
     let strVal = ""; 
     for (let key in currencies) {
@@ -9,6 +9,21 @@ function stringifyCurrency(currencies: any): string[] {
         return [strVal];
     }
     return [strVal];
+}
+
+// takes languages object and returns it as string[]
+function stringifyLanguages(langs: any): string[] {
+    let strVals = ""; 
+    for (let key in langs) {
+        strVals += langs[key]+ ',';
+        console.log(` language is ${key}: ${strVals}`);
+    }
+    let charArr = [...strVals];
+    const lastCharIdx: number =  charArr.length -1;
+    charArr[lastCharIdx] = "";
+
+    const rsltArr = strVals.split(',');
+    return rsltArr;
 }
 
 
@@ -32,7 +47,7 @@ export async function fetchAllCountries() {
                 elem['capital'],
                 elem['topLevelDomain'],
                 stringifyCurrency(elem['currencies']),
-                elem['languages']
+                stringifyLanguages(elem['languages'])
             );
             countryLst.push(tempCountry);
         });
