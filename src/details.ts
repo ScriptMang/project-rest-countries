@@ -108,7 +108,7 @@ function displayDetailsPage() {
        currencies.append(currenciesText);
        extraInfoContainer2.appendChild(currencies);
        
-        tgtCountryContainer.appendChild(countryTitle);
+        tgtCountryContainer.appendChild(countryTitle); 
         extraInfoContainer.append(extraInfoContainer1);
         extraInfoContainer.append(extraInfoContainer2);
         tgtCountryContainer.append(extraInfoContainer);
